@@ -6,6 +6,7 @@ import * as am5map from "@amcharts/amcharts5/map";
 // import am5geodata_worldLow from "@amcharts/amcharts5/geodata/worldLow";
 import am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+import { prototype } from 'events';
 
 @Component({
   selector: 'app-root',
@@ -14,11 +15,24 @@ import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 })
 export class AppComponent implements AfterViewInit {
   title = 'ng-visu';
-//@ViewChild('chartdiv') div:any;
 
 ngAfterViewInit(){
+  // create a client
+  let client = mqtt.connect('ws://127.0.0.1', {
+protocolId: 'MQIsdp',
+protocolVersion: 3,
+port: 1885,
+clean: true,
+  })
 
-//this.div
+
+  client.subscribe('/test');
+
+  client.on('message', function (topic, message) {
+    // message is Buffer
+    console.log(message.toString())
+    //client.end()
+  })
 
 // Create root element
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
@@ -108,7 +122,7 @@ const polygonSeries = chart.series.push(
 var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {}));
 graticuleSeries.mapLines.template.setAll({
   stroke: root.interfaceColors.get("alternativeBackground"),
-  strokeOpacity: 0.08
+  strokeOpacity: 0.0
 });
 
 
@@ -117,7 +131,7 @@ graticuleSeries.mapLines.template.setAll({
 const lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
 lineSeries.mapLines.template.setAll({
   stroke: root.interfaceColors.get("alternativeBackground"),
-  strokeOpacity: 0.3
+  strokeOpacity: 0.8
 });
 
 // Create point series for markers
@@ -166,7 +180,7 @@ const planeSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
 const plane = am5.Graphics.new(root, {
   svgPath:
     "m2,106h28l24,30h72l-44,-133h35l80,132h98c21,0 21,34 0,34l-98,0 -80,134h-35l43,-133h-71l-24,30h-28l15,-47",
-  scale: 0.06,
+  scale: 0.08,
   centerY: am5.p50,
   centerX: am5.p50,
   fill: am5.color(0x000000)
@@ -187,7 +201,7 @@ const planeDataItem = planeSeries.pushDataItem({
 planeDataItem.animate({
   key: "positionOnLine",
   to: 1,
-  duration: 10000,
+  duration: 100000,
   loops: Infinity,
   easing: am5.ease.yoyo(am5.ease.linear)
 });
