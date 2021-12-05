@@ -1,0 +1,15 @@
+{
+  "name": "carbon-mqtt-io",
+  "version": "0.0.1",
+  "description": "node scripts for brdiging i/o signals to the carbon demonstrator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Karl Seidenfad",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^16.11.11",
+    "typescript": "^4.5.2"
+  }
+}
