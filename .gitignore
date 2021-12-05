@@ -3,3 +3,6 @@ vars/*
 *.retry
 .vscode
 .DS_Store
+
+carbon-mqtt-io/node_modules
+carbon-mqtt-io/build
