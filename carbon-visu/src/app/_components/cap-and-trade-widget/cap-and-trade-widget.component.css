@@ -1,0 +1,9 @@
+#barchartdiv{
+    width: 550px;
+    height: 600px;
+    z-index: 1;
+    position: absolute;
+    top: 700px;
+    left: 60px;
+
+  }

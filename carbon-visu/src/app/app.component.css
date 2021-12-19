@@ -1,4 +1,8 @@
 #chartdiv {
-    width: 2500px;
-    height: 1400px;
+    width: 3000px;
+    height: 1500px;
+    z-index: 0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
   }
