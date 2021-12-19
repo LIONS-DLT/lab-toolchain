@@ -1,0 +1,536 @@
+[
+    {
+        "id": "471e562d.d40178",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "18775a33.189446",
+        "type": "data-generator",
+        "z": "471e562d.d40178",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "syntax": "text",
+        "template": "{\n    \"name\": \"{{firstName}} {{lastName}}\",\n    \"work\": \"{{company}}\",\n    \"email\": \"{{email}}\",\n    \"address\": \"{{int 1 100}} {{street}}\",\n    \"country\": \"{{country}}\"\n}",
+        "x": 1040,
+        "y": 80,
+        "wires": [
+            [
+                "f40a6dba.bb4ee"
+            ]
+        ]
+    },
+    {
+        "id": "f40a6dba.bb4ee",
+        "type": "debug",
+        "z": "471e562d.d40178",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "jsonata",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1260,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "d8aad851.fa88a8",
+        "type": "status",
+        "z": "471e562d.d40178",
+        "name": "",
+        "scope": null,
+        "x": 1230,
+        "y": 260,
+        "wires": [
+            [
+                "f40a6dba.bb4ee"
+            ]
+        ]
+    },
+    {
+        "id": "3247d315.71c61c",
+        "type": "mqtt in",
+        "z": "471e562d.d40178",
+        "name": "",
+        "topic": "test",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "78b6cd65.6a2e74",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 860,
+        "y": 220,
+        "wires": [
+            [
+                "7e3f6cbe.83c934",
+                "18775a33.189446"
+            ]
+        ]
+    },
+    {
+        "id": "7e3f6cbe.83c934",
+        "type": "debug",
+        "z": "471e562d.d40178",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1050,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "7be84e32.16967",
+        "type": "mqtt out",
+        "z": "471e562d.d40178",
+        "name": "",
+        "topic": "/path",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "78b6cd65.6a2e74",
+        "x": 430,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "69d50b56.acdab4",
+        "type": "inject",
+        "z": "471e562d.d40178",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "/path",
+        "payload": "{\"path\":[{\"name\":\"Paris\",\"lat\":\"48.8567\",\"long\":\"2.351\"},{\"name\":\"Toronto\",\"lat\":\"43.8163\",\"long\":\"-79.4287\"},{\"name\":\"Los Angeles\",\"lat\":\"34.3\",\"long\":\"-118.15\"},{\"name\":\"Havana\",\"lat\":\"23\",\"long\":\"-82\"}],\"duration\":5000}",
+        "payloadType": "json",
+        "x": 200,
+        "y": 60,
+        "wires": [
+            [
+                "7be84e32.16967"
+            ]
+        ]
+    },
+    {
+        "id": "67934701.bd1c98",
+        "type": "inject",
+        "z": "471e562d.d40178",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "/path",
+        "payload": "{\"path\":[{\"name\":\"Saigon\",\"lat\":\"10.823099\",\"long\":\"106.629662\"},{\"name\":\"Singapur\",\"lat\":\"1.352083\",\"long\":\"103.819839\"},{\"name\":\"Paris\",\"lat\":\"48.8567\",\"long\":\"2.351\"}],\"duration\":10000}",
+        "payloadType": "json",
+        "x": 200,
+        "y": 160,
+        "wires": [
+            [
+                "7be84e32.16967"
+            ]
+        ]
+    },
+    {
+        "id": "4632d6ad.a5aa98",
+        "type": "inject",
+        "z": "471e562d.d40178",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "/path",
+        "payload": "{\"path\":[{\"name\":\"New York\",\"lat\":\"40.712776\",\"long\":\"-74.005974\"},{\"name\":\"Toronto\",\"lat\":\"43.8163\",\"long\":\"-79.4287\"},{\"name\":\"Los Angeles\",\"lat\":\"34.3\",\"long\":\"-118.15\"},{\"name\":\"Cape Town (UK)\",\"lat\":\"-33.924870\",\"long\":\"18.424055\"}],\"duration\":15000}",
+        "payloadType": "json",
+        "x": 200,
+        "y": 240,
+        "wires": [
+            [
+                "7be84e32.16967"
+            ]
+        ]
+    },
+    {
+        "id": "cb62f77f.654818",
+        "type": "mqtt out",
+        "z": "471e562d.d40178",
+        "name": "",
+        "topic": "/clear",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "78b6cd65.6a2e74",
+        "x": 390,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "134e2bf5.2fc774",
+        "type": "inject",
+        "z": "471e562d.d40178",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "/clear",
+        "payload": "hello",
+        "payloadType": "str",
+        "x": 220,
+        "y": 360,
+        "wires": [
+            [
+                "cb62f77f.654818"
+            ]
+        ]
+    },
+    {
+        "id": "dcbc2008.16f3f",
+        "type": "inject",
+        "z": "471e562d.d40178",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "/path",
+        "payload": "{\"path\":[{\"name\":\"Paris\",\"lat\":\"48.8567\",\"long\":\"2.351\"},{\"name\":\"Toronto\",\"lat\":\"43.8163\",\"long\":\"-79.4287\"}],\"duration\":100}",
+        "payloadType": "json",
+        "x": 390,
+        "y": 240,
+        "wires": [
+            [
+                "7be84e32.16967"
+            ]
+        ]
+    },
+    {
+        "id": "b34090f0.9fda7",
+        "type": "mqtt out",
+        "z": "471e562d.d40178",
+        "name": "",
+        "topic": "/carbon",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "78b6cd65.6a2e74",
+        "x": 780,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "3d55f3d3.b3416c",
+        "type": "inject",
+        "z": "471e562d.d40178",
+        "name": "ALL - less",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"actor\":\"Farmer\",\"cap\":2.5,\"offset\":2.5},{\"actor\":\"Logistics\",\"cap\":2.6,\"offset\":2.7},{\"actor\":\"Production\",\"cap\":2.8,\"offset\":2.9},{\"actor\":\"Retail\",\"cap\":2.8,\"offset\":2.9}]",
+        "payloadType": "json",
+        "x": 600,
+        "y": 420,
+        "wires": [
+            [
+                "b34090f0.9fda7"
+            ]
+        ]
+    },
+    {
+        "id": "8371f61a.93f708",
+        "type": "mqtt out",
+        "z": "471e562d.d40178",
+        "name": "",
+        "topic": "/carbon",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "78b6cd65.6a2e74",
+        "x": 440,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "53d49fd6.2f18e",
+        "type": "inject",
+        "z": "471e562d.d40178",
+        "name": "Farmer",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"actor\":\"Farmer\",\"cap\":2.5,\"offset\":2.5}]",
+        "payloadType": "json",
+        "x": 250,
+        "y": 600,
+        "wires": [
+            [
+                "8371f61a.93f708"
+            ]
+        ]
+    },
+    {
+        "id": "42d60061.30159",
+        "type": "mqtt out",
+        "z": "471e562d.d40178",
+        "name": "",
+        "topic": "/carbon",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "78b6cd65.6a2e74",
+        "x": 440,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "14dc95f3.02ee1a",
+        "type": "inject",
+        "z": "471e562d.d40178",
+        "name": "Logistics",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"actor\":\"Logistics\",\"cap\":2.6,\"offset\":2.7}]",
+        "payloadType": "json",
+        "x": 260,
+        "y": 680,
+        "wires": [
+            [
+                "42d60061.30159"
+            ]
+        ]
+    },
+    {
+        "id": "b37defc.3ef871",
+        "type": "mqtt out",
+        "z": "471e562d.d40178",
+        "name": "",
+        "topic": "/carbon",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "78b6cd65.6a2e74",
+        "x": 800,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "cef00bcf.9e96d8",
+        "type": "inject",
+        "z": "471e562d.d40178",
+        "name": "ALL - much",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"actor\":\"Farmer\",\"cap\":12.5,\"offset\":3.5},{\"actor\":\"Logistics\",\"cap\":23.6,\"offset\":5.7},{\"actor\":\"Production\",\"cap\":45.8,\"offset\":7.9},{\"actor\":\"Retail\",\"cap\":5.8,\"offset\":3.9}]",
+        "payloadType": "json",
+        "x": 630,
+        "y": 500,
+        "wires": [
+            [
+                "b37defc.3ef871"
+            ]
+        ]
+    },
+    {
+        "id": "2a4de15b.f3327e",
+        "type": "mqtt out",
+        "z": "471e562d.d40178",
+        "name": "",
+        "topic": "/carbon",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "78b6cd65.6a2e74",
+        "x": 840,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "a61c9415.b888c8",
+        "type": "inject",
+        "z": "471e562d.d40178",
+        "name": "ALL - Compensate",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"actor\":\"Farmer\",\"cap\":12.5,\"offset\":0},{\"actor\":\"Logistics\",\"cap\":23.6,\"offset\":0},{\"actor\":\"Production\",\"cap\":45.8,\"offset\":0},{\"actor\":\"Retail\",\"cap\":5.8,\"offset\":0}]",
+        "payloadType": "json",
+        "x": 650,
+        "y": 580,
+        "wires": [
+            [
+                "2a4de15b.f3327e"
+            ]
+        ]
+    },
+    {
+        "id": "78b6cd65.6a2e74",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    }
+]
