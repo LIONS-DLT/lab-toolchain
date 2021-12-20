@@ -106,15 +106,15 @@
         "correl": "",
         "expiry": "",
         "broker": "78b6cd65.6a2e74",
-        "x": 430,
-        "y": 60,
+        "x": 650,
+        "y": 120,
         "wires": []
     },
     {
         "id": "69d50b56.acdab4",
         "type": "inject",
         "z": "471e562d.d40178",
-        "name": "",
+        "name": "EU->US",
         "props": [
             {
                 "p": "payload"
@@ -129,9 +129,9 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "/path",
-        "payload": "{\"path\":[{\"name\":\"Paris\",\"lat\":\"48.8567\",\"long\":\"2.351\"},{\"name\":\"Toronto\",\"lat\":\"43.8163\",\"long\":\"-79.4287\"},{\"name\":\"Los Angeles\",\"lat\":\"34.3\",\"long\":\"-118.15\"},{\"name\":\"Havana\",\"lat\":\"23\",\"long\":\"-82\"}],\"duration\":5000}",
+        "payload": "{\"path\":[{\"name\":\"Paris\",\"lat\":\"48.8567\",\"long\":\"2.351\"},{\"name\":\"Toronto\",\"lat\":\"43.8163\",\"long\":\"-79.4287\"},{\"name\":\"Los Angeles\",\"lat\":\"34.3\",\"long\":\"-118.15\"},{\"name\":\"Havana\",\"lat\":\"23\",\"long\":\"-82\"}],\"duration\":5000,\"alarm\":false}",
         "payloadType": "json",
-        "x": 200,
+        "x": 210,
         "y": 60,
         "wires": [
             [
@@ -143,7 +143,7 @@
         "id": "67934701.bd1c98",
         "type": "inject",
         "z": "471e562d.d40178",
-        "name": "",
+        "name": "VN->DE",
         "props": [
             {
                 "p": "payload"
@@ -158,10 +158,10 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "/path",
-        "payload": "{\"path\":[{\"name\":\"Saigon\",\"lat\":\"10.823099\",\"long\":\"106.629662\"},{\"name\":\"Singapur\",\"lat\":\"1.352083\",\"long\":\"103.819839\"},{\"name\":\"Paris\",\"lat\":\"48.8567\",\"long\":\"2.351\"}],\"duration\":10000}",
+        "payload": "{\"path\":[{\"name\":\"Saigon\",\"lat\":\"10.823099\",\"long\":\"106.629662\"},{\"name\":\"Singapur\",\"lat\":\"1.352083\",\"long\":\"103.819839\"},{\"name\":\"Paris\",\"lat\":\"48.8567\",\"long\":\"2.351\"}],\"duration\":10000,\"alarm\":false}",
         "payloadType": "json",
         "x": 200,
-        "y": 160,
+        "y": 120,
         "wires": [
             [
                 "7be84e32.16967"
@@ -172,7 +172,7 @@
         "id": "4632d6ad.a5aa98",
         "type": "inject",
         "z": "471e562d.d40178",
-        "name": "",
+        "name": "US->AFR",
         "props": [
             {
                 "p": "payload"
@@ -187,10 +187,10 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "/path",
-        "payload": "{\"path\":[{\"name\":\"New York\",\"lat\":\"40.712776\",\"long\":\"-74.005974\"},{\"name\":\"Toronto\",\"lat\":\"43.8163\",\"long\":\"-79.4287\"},{\"name\":\"Los Angeles\",\"lat\":\"34.3\",\"long\":\"-118.15\"},{\"name\":\"Cape Town (UK)\",\"lat\":\"-33.924870\",\"long\":\"18.424055\"}],\"duration\":15000}",
+        "payload": "{\"path\":[{\"name\":\"New York\",\"lat\":\"40.712776\",\"long\":\"-74.005974\"},{\"name\":\"Toronto\",\"lat\":\"43.8163\",\"long\":\"-79.4287\"},{\"name\":\"Los Angeles\",\"lat\":\"34.3\",\"long\":\"-118.15\"},{\"name\":\"Cape Town (UK)\",\"lat\":\"-33.924870\",\"long\":\"18.424055\"}],\"duration\":15000,\"alarm\":false}",
         "payloadType": "json",
         "x": 200,
-        "y": 240,
+        "y": 180,
         "wires": [
             [
                 "7be84e32.16967"
@@ -211,8 +211,8 @@
         "correl": "",
         "expiry": "",
         "broker": "78b6cd65.6a2e74",
-        "x": 390,
-        "y": 320,
+        "x": 370,
+        "y": 400,
         "wires": []
     },
     {
@@ -236,8 +236,8 @@
         "topic": "/clear",
         "payload": "hello",
         "payloadType": "str",
-        "x": 220,
-        "y": 360,
+        "x": 200,
+        "y": 440,
         "wires": [
             [
                 "cb62f77f.654818"
@@ -248,7 +248,7 @@
         "id": "dcbc2008.16f3f",
         "type": "inject",
         "z": "471e562d.d40178",
-        "name": "",
+        "name": "BR->DE",
         "props": [
             {
                 "p": "payload"
@@ -263,9 +263,9 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "/path",
-        "payload": "{\"path\":[{\"name\":\"Paris\",\"lat\":\"48.8567\",\"long\":\"2.351\"},{\"name\":\"Toronto\",\"lat\":\"43.8163\",\"long\":\"-79.4287\"}],\"duration\":100}",
+        "payload": "{\"path\":[{\"name\":\"La Paz\",\"lat\":\"-16.489689\",\"long\":\"-68.119293\"},{\"name\":\"Rio de Janeiro\",\"lat\":\"-9.542630\",\"long\":\"-36.634300\"},{\"name\":\"Hamburg\",\"lat\":\"53.551086\",\"long\":\"9.993682\"}],\"duration\":5000,\"alarm\":false}",
         "payloadType": "json",
-        "x": 390,
+        "x": 200,
         "y": 240,
         "wires": [
             [
@@ -505,6 +505,35 @@
         "wires": [
             [
                 "2a4de15b.f3327e"
+            ]
+        ]
+    },
+    {
+        "id": "12abc142.cff59f",
+        "type": "inject",
+        "z": "471e562d.d40178",
+        "name": "DE->BR (ALARM)",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "/path",
+        "payload": "{\"path\":[{\"name\":\"Hamburg\",\"lat\":\"53.551086\",\"long\":\"9.993682\"},{\"name\":\"Rio de Janeiro\",\"lat\":\"-9.542630\",\"long\":\"-36.634300\"},{\"name\":\"La Paz\",\"lat\":\"-16.489689\",\"long\":\"-68.119293\"}],\"duration\":5000,\"alarm\":true}",
+        "payloadType": "json",
+        "x": 220,
+        "y": 300,
+        "wires": [
+            [
+                "7be84e32.16967"
             ]
         ]
     },
