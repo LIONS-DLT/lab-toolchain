@@ -76,6 +76,11 @@ export class CapAndTradeWidgetComponent implements OnInit, AfterViewInit {
     }));
 
     xAxis.data.setAll(data);
+    let yRenderer = xAxis.get("renderer");
+    yRenderer.labels.template.setAll({
+      fill: am5.color(0x000000),
+      fontSize: 24
+    });
 
     var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
       min: 0,
@@ -162,6 +167,10 @@ export class CapAndTradeWidgetComponent implements OnInit, AfterViewInit {
       
         legend.data.push(cap_series);
         legend.data.push(offset_series);
+        legend.labels.template.setAll({
+          fontSize: 26,
+          fontWeight: "300"
+        });
  }
      /* }else{
 
