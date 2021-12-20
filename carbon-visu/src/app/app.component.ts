@@ -194,12 +194,31 @@ export class AppComponent implements AfterViewInit {
           fill: am5.color(0x5E361C)
         });
 
-
-        planeSeries.bullets.push(function () {
-          var container = am5.Container.new(root, {});
-          container.children.push(coffee);
-          return am5.Bullet.new(root, { sprite: container });
+        var bad_coffee = am5.Graphics.new(root, {
+          svgPath:
+            "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z, M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z",
+          scale: 5,
+          centerY: am5.p50,
+          centerX: am5.p50,
+          fill: am5.color(0xDA420F),
+          rotation: 180
         });
+
+
+        if(pathList.alarm == true){
+          planeSeries.bullets.push(function () {
+            var container = am5.Container.new(root, {});
+            container.children.push(bad_coffee);
+            return am5.Bullet.new(root, { sprite: container });
+          });
+        }else{
+          planeSeries.bullets.push(function () {
+            var container = am5.Container.new(root, {});
+            container.children.push(coffee);
+            return am5.Bullet.new(root, { sprite: container });
+          });
+        }
+
 
         var planeDataItem = planeSeries.pushDataItem({
           lineDataItem: lineDataItem,
