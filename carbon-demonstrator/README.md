@@ -10,7 +10,7 @@ This document describes all artefacts for rebuilding the carbon accounting demon
 4. [Visualization](#visualization)
 
 ### Bill of Materials (BOM)
-The following BOM lists the essential components for building the carbon demonstrator. Beside this BOM you may need further equipment such as, cables (ethernet, HDMI etc.), electrical wiring, buttons and cable ties.
+The following BOM lists the essential components for building the carbon demonstrator. Beside this BOM you may need further equipment such as, cables (ethernet, HDMI etc.), electrical wiring, buttons, 1-2 monitors and cable ties.
 
 | Material                         | Ammount | Reference                                                                                                                                       |
 |----------------------------------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------|
