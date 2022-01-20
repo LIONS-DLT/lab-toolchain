@@ -21,13 +21,19 @@ The following BOM lists the essential components for building the carbon demonst
 | Pocket PC                                    | 1       | e.g. Fujitsu Esprimo Q556/2                                                                                                                     |
 
 
-### Hardware Assembly
-PICTURE + Description 
-
+### Hardware Assembly 
+The following picture shows the simplified setup of the cluster. The pocket pc is not depcited, because it does not take an active role in the network and only serves the visualizations.
 <img src="./pictures/cluster.png" width="800" height="550"/>
 
 ### Network Setup
-PICTURE + Description 
+The usage of [minifabric](https://github.com/hyperledger-labs/minifabric) allows very straight processes for structing the network and the consortium. The following example depicts the stepwise process of onboarding a new organization to the consortium.</br>
+<img src="./pictures/nodes.png" width="800" height="400"/></br>
+| Step | Description |
+|------|-------------|
+| 1    | To prepare the existing network for the joining process of a new peer, run the mini-fabric command “channelquery”. As a result, the channel configuration file will be created.            |
+| 2    | Modify the spec.yaml on a different machine as described above and run the “netup” command. A single peer will be started.            |
+| 3    | Copy the join request, which is created by the new peer, to the configuration file. After a majority of network peers have signed the new config file, run “chan-nelupdate” to update the network. Join the single peer with the “nodeimport” command. Now the new peer is connected to the network and the order service but is not a member of the channel yet.            |
+| 4    | Install the chaincode on the joined peer. After this, run the “approve” command on every peer, so the chaincode is approved. Now you can run the “commit” command to commit the chaincode. During this process the chaincode container on the new peer should be started. Run a simple “invoke” command to check if everything work as expected.            |
 
 ### Visualization
 PICTURE + Description 
