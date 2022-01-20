@@ -1,34 +1,13 @@
 # Carbon Accounting Demonstrator 
 
 This document describes all artefacts for rebuilding the carbon accounting demonstrator of the LIONS research project. The demonstrators consist of five Raspberry Pi's and a pocket pc running as a fully decentralized cluster to operate a Hyperledger Fabric blockchain network.
-
-<style>
-    .column {
-  float: left;
-  width: 50%;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-    </style>
-
-<div class="row">
-  <div class="column">
-  <a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/"> <img src="./pictures/pi-plug-in.gif" width="320" height="230"/></br>
+<a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/"> <img src="./pictures/pi-plug-in.gif" width="320" height="230"/></br>
 <font size="1">Picture: https://www.raspberrypi.org/ </font>
-  </div>
-  <div class="column">
 
 1. [Bill of Materials (BOM)](#bill-of-materials)
 2. [Hardware Assembly](#hardware-assembly)
 3. [Network Setup](#network-setup)
 4. [Visualization](#visualization)
-  </div>
-</div>
 
 ### Bill of Materials (BOM)
 The following BOM lists the essential components for building the carbon demonstrator. Beside this BOM you may need further equipment such as, cables (ethernet, HDMI etc.), electrical wiring, buttons and cable ties.
