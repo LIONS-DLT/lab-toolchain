@@ -1,7 +1,9 @@
 # Carbon Accounting Demonstrator 
 
 
-This folder contains all artefacts to rebuild the carbon accounting demonstrator of the LIONS project.
+This document describes all artefacts for rebuilding the carbon accounting demonstrator of the LIONS research project. The demonstrators consist of five Raspberry Pi's and a pocket pc running as a fully decentralized cluster to operate a Hyperledger Fabric blockchain network.
+<a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/"> <img src="./pictures/pi-plug-in.gif" width="320" height="230"/>
+<font size="1">Source: https://www.raspberrypi.org/ </font>
 
 Table of Content
 ========================
@@ -10,18 +12,16 @@ Table of Content
 3. [Network Setup](#network-setup)
 4. [Visualization](#visualization)
 
-### Bill of Materials
-TABLE 
+### Bill of Materials (BOM)
+The following BOM lists the essential components for building the carbon demonstrator. Beside this BOM you may need further equipment such as, cables (ethernet, HDMI etc.), electrical wiring, buttons and cable ties.
 
-| Material                                | Ammount | Link |
-|-----------------------------------------|---------|---------|
-| Raspberry Pi 4 B+ (min. 2GB RAM)        | 5       |   <a href="https://www.ros.org" target="_blank"> <img src="/pictures/pi.jpeg" width="80" height="20"/> </a>       |
-| Raspberry Pi Power Supply               | 5       |         |
-| SD Cards (min. 16GB)                    | 5       |         |
-| Power Strip with min. 6 ports           | 2       |         |
-| Box + Cover (e.g. eurobox 22L)          | 1       |         |
-| Network Switch 8xports                  | 1       |         |
-| Pocket PC (e.g. Fujitsu Esprimo Q556/2) | 1       |         |
+| Material                         | Ammount | Reference                                                                                                                                       |
+|----------------------------------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| Raspberry Pi 4 B+ (min. 4GB RAM) | 5       | <a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/"> <img src="./pictures/pi.jpeg" width="180" height="100"/> </a>           |
+| Raspberry Pi Power Supply        | 5       | <a href="https://www.raspberrypi.com/products/type-c-power-supply/"> <img src="./pictures/power.jpeg" width="180" height="100"/> </a>           |
+| Box + Cover (e.g. eurobox 22L)   | 1       | <a href="https://www.surplus-systems.de/produkte/euronormboxen/"> <img src="./pictures/box.png" width="180" height="100"/> </a>                 |
+| Network Switch 8xports           | 1       | <a href="https://www.netgear.com/de/business/wired/switches/unmanaged/gs108/"> <img src="./pictures/switch.png" width="150" height="100"/> </a> |
+| Pocket PC                        | 1       | e.g. Fujitsu Esprimo Q556/2                                                                                                                     |
 
 
 ### Hardware Assembly
