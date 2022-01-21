@@ -39,5 +39,6 @@ The usage of [minifabric](https://github.com/hyperledger-labs/minifabric) allows
 PICTURE + Description 
 #### Carbon Visu
 PICTURE + Description 
+<img src="./pictures/carbon_visu.gif" width="800" height="400"/></br>
 #### Transaction Visu
 
