@@ -1,12 +1,13 @@
 # Carbon Accounting Demonstrator 
 
-This document describes all artefacts for rebuilding the carbon accounting demonstrator of the LIONS research project. The demonstrators consist of five Raspberry Pi's and a pocket pc running as a fully decentralized cluster to operate a Hyperledger Fabric blockchain network.
-<a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/"> <img src="./pictures/pi-plug-in.gif" width="320" height="230"/><img src="./pictures/carbon_visu.gif" width="800" height="400"/></br>
-<font size="1">Picture: https://www.raspberrypi.org/ </font>
+This document describes all artefacts for rebuilding the carbon accounting demonstrator of the LIONS research project. The demonstrators consist of five Raspberry Pi's and a pocket pc running as a fully decentralized cluster to operate a Hyperledger Fabric blockchain network. The following picture shows the simplified setup of the cluster.
+
+
+<a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/"> <img src="./pictures/pi-plug-in.gif" width="320" height="230"/><img src="./pictures/cluster.png" width="650" height="350"/></br><font size="1">Picture: https://www.raspberrypi.org/ </font>
+
 
 1. [Bill of Materials (BOM)](#bill-of-materials)
-2. [Hardware Assembly](#hardware-assembly)
-3. [Network Setup](#network-setup)
+3. [Blockchain Network Setup](#blockchain-network-setup)
 4. [Visualization](#visualization)
 
 ### Bill of Materials (BOM)
@@ -14,18 +15,13 @@ The following BOM lists the essential components for building the carbon demonst
 
 | Material                                     | Ammount | Reference                                                                                                                                       |
 |----------------------------------------------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-| Raspberry Pi 4 B+ (min. 4GB RAM)             | 5       | <a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/"> <img src="./pictures/pi.jpeg" width="180" height="100"/> </a>           |
-| Raspberry Pi Power Supply                    | 5       | <a href="https://www.raspberrypi.com/products/type-c-power-supply/"> <img src="./pictures/power.jpeg" width="180" height="100"/> </a>           |
-| Box + Cover (e.g. eurobox 22L; 40x60x12,5cm) | 1       | <a href="https://www.surplus-systems.de/produkte/euronormboxen/"> <img src="./pictures/box.png" width="180" height="100"/> </a>                 |
-| Network Switch 8xports                       | 1       | <a href="https://www.netgear.com/de/business/wired/switches/unmanaged/gs108/"> <img src="./pictures/switch.png" width="150" height="100"/> </a> |
+| Raspberry Pi 4 B+ (min. 4GB RAM)             | 5       | <a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/"> <img src="./pictures/pi.jpeg" width="80" height="50"/> </a>           |
+| Raspberry Pi Power Supply                    | 5       | <a href="https://www.raspberrypi.com/products/type-c-power-supply/"> <img src="./pictures/power.jpeg" width="80" height="50"/> </a>           |
+| Box + Cover (e.g. eurobox 22L; 40x60x12,5cm) | 1       | <a href="https://www.surplus-systems.de/produkte/euronormboxen/"> <img src="./pictures/box.png" width="80" height="50"/> </a>                 |
+| Network Switch 8xports                       | 1       | <a href="https://www.netgear.com/de/business/wired/switches/unmanaged/gs108/"> <img src="./pictures/switch.png" width="80" height="50"/> </a> |
 | Pocket PC                                    | 1       | e.g. Fujitsu Esprimo Q556/2                                                                                                                     |
 
-
-### Hardware Assembly 
-The following picture shows the simplified setup of the cluster. The pocket pc is not depcited, because it does not take an active role in the network and only serves the visualizations.
-<img src="./pictures/cluster.png" width="800" height="550"/>
-
-### Network Setup
+### Blockchain Network Setup
 The usage of [minifabric](https://github.com/hyperledger-labs/minifabric) allows very straight processes for structing the network and the consortium. The following example depicts the stepwise process of onboarding a new organization to the consortium.</br>
 <img src="./pictures/nodes.png" width="800" height="400"/></br>
 | Step | Description |
