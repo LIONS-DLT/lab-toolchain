@@ -7,8 +7,9 @@ This document describes all artefacts for rebuilding the carbon accounting demon
 
 
 1. [Bill of Materials (BOM)](#bill-of-materials-bom)
-3. [Blockchain Network Setup](#blockchain-network-setup)
-4. [Visualization](#visualization)
+2. [Carbon Visualization](#carbon-visualization)
+3. [Transaction Visualization](#transaction-visualization)
+4. [Blockchain Network Setup](#blockchain-network-setup)
 
 ### Bill of Materials (BOM)
 The following BOM lists the essential components for building the carbon demonstrator. Beside this BOM you may need further equipment such as, cables (ethernet, HDMI etc.), electrical wiring, buttons, 1-2 monitors and cable ties.
@@ -21,14 +22,14 @@ The following BOM lists the essential components for building the carbon demonst
 | Network Switch 8xports                       | 1       | <a href="https://www.netgear.com/de/business/wired/switches/unmanaged/gs108/"> <img src="./pictures/switch.png" width="80" height="50"/> </a> |
 | Pocket PC                                    | 1       | e.g. Fujitsu Esprimo Q556/2                                                                                                                     |
 
-### Carbon Visu
+### Carbon Visualization
 The carbon visualization is a angular webapp and receives live data over MQTT. It visualizes product shipments (e.g. coffee) based on geospatial data. The application is capable to track shipments and also trace them back in case of a product incident (e.g. red circle). Beside the topic food safety, the visualization depicts emissions annotated to each actor of the supply chain. Therefore, a bar chart on the left corner holds the data which is relevant for the cap-and-trade scheme. In the beginning we can see the bars with the emissions cap (bright blue) and the emissions offset (dark blue). Later the emissions offsets are eliminated by the aqcuisition of additional emissions certificates. </br> 
 
 *Why MQTT?* - We use MQTT to ensure visualizations with a good performance, which fits for live demonstration purpose. Blockchain transactions on the Raspberry Pi cluster are processed in a timeframe of approx. 30-60 seconds and a supply chain case takes up to 6 transactions. Therefore, the blockchain transactions can be spectated by Hyperledger Explorer, but for demonstration purpose the user interface accesses a local MQTT broker.</br>
 <img src="./pictures/carbon_visu.gif" width="800" height="400"/></br>
 The web app can be found in the folder `carbon-visu` and a node-red flow to trigger events on the visualization over MQTT can be found in the folder `carbon-mqtt-io` of this repo. </br>
 
-### Transaction Visu
+### Transaction Visualization
 To visualize transactions on the blockchain, the demonstrator utilizes Hyperledger Explorer. The Explorer can be started with the command `minifab explorerup` and can be shutdown with `minifab explorerdown`.
 
 <img src="./pictures/explorer.png" width="900" height="450"/></br><font size="1">Source: https://blockchain-explorer.readthedocs.io/en/master/presentation/ </font>
