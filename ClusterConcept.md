@@ -15,17 +15,21 @@ From the infrastructure perspective we have the following components
 | Physical node |  Physical | DELL Server | The physical servers|
 | Storage nodes | Physical | NetApp Storage appliance | used for storing development-related data, container and virtual machine images |
 | Container platform |   virtualization platform   |  RedHat OpenShift Container Platform (OCP)| Locally hosted edition of the OCP |
-| Orchestration | container virtualization |  Kubernetes | Hosts and controls all services |
+| Orchestration | container virtualization |  Kubernetes | Hosts and controls all services. It wraps containers in units called _pods_ |
 | Individual containers| container | docker | Applications and other solution components run on containers |
 | Virtual machines | operating system guest virtualization | VMware, Hyper-V and VirtualBox images supported | Virtual Machines can also be hosted alongside containers on our platform. Some legacy applications cannot be immediately ported to container technology or there are other isolation requirements |
 
-## DevOps and CI/CD support for development
+WORK IN PROGRESS:  Diagram for the platform overview
+
+## DevOps and CI/CD support for development :arrows_counterclockwise:
 
 The OpenShift Container Platform is designed for easy development and integration with common CI/CD-tools.
 
 ## Actors and Organizations
 
-tbd
+This section provides an overview of the actor types used as a basis for 
+
+For the scenario IT Supply Chain - development of complex software and cyber-physical systems - we have identified the following types of actos.
 
 ## Scenario Architectures and Categories
 
