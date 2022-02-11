@@ -8,7 +8,20 @@ A specific challenge for industry and research groups alike is that they do not 
 
 ## High-level Platform Architecture
 
-tbd.
+From the infrastructure perspective we have the following components
+
+| Component name   |      Layer      |  Technology description  | Details |
+|----------|:-------------|------:|:------:|
+| Physical node |  Physical | DELL Server | The physical servers|
+| Storage nodes | Physical | NetApp Storage appliance | used for storing development-related data, container and virtual machine images |
+| Container platform |   virtualization platform   |  RedHat OpenShift Container Platform (OCP)| Locally hosted edition of the OCP |
+| Orchestration | container virtualization |  Kubernetes | Hosts and controls all services |
+| Individual containers| container | docker | Applications and other solution components run on containers |
+| Virtual machines | operating system guest virtualization | VMware, Hyper-V and VirtualBox images supported | Virtual Machines can also be hosted alongside containers on our platform. Some legacy applications cannot be immediately ported to container technology or there are other isolation requirements |
+
+## DevOps and CI/CD support for development
+
+The OpenShift Container Platform is designed for easy development and integration with common CI/CD-tools.
 
 ## Actors and Organizations
 
