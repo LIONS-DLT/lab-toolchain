@@ -67,4 +67,45 @@ For the scenario IT Supply Chain - development of complex software and cyber-phy
 
 ## Scenario Architectures and Categories
 
-Our high-level system architec
+Our proposed high-level system architecture consists of three layers:
+
+1. Usage Layer - Includes scenarios from different organizations which have been approved for usage on our infrastructure.
+2. Deployment Layer - Includes an (internal) application for configuring scenarios as well as a provisioning engine and developer self-service access through the OpenShift platform.
+3. Infrastructure Layer - Consists of generic infrastructure components for Hyperledger Fabric. These are combined at the deployment layer to correspond to desired scenarios and cover individual requirements.
+
+![Diagram - Multi-Tenant Concept](assets/diagrams/Multi-Tenant-Konzept.jpg)
+
+### Usage Layer
+
+As our platform should be open to usage from other organizations, this layer sets the criteria. Generally we welcome submissions from other faculties, research groups or research institutes. It is also possible to get access to the platform as an external cooperation partner (e.g. a Research & Development project from the industry).
+
+After submitting your request we will review and discuss your application. If this is approved, the scenario gets its own tenant in our infrastructure, with the required Fabric-capacity as well as development and monitoring components.
+
+### Deployment Layer
+
+After a scenario access request has been approved, we plan to use a scenario mapping webapplication in order to generate the configuration for the different components that can be provisioned and mapped for each indiviudal scenario (tenant).
+
+The webapplication outputs a scenario configuration file in JSON-format which is then used by the Provisioning Engine.
+
+The scenario web application is React based and is planned to be released as an open source artifact on GitHub. Our provisioning engine is based on multiple compoments such as minifabric, but mainly on a Tool called [Ansible](https://docs.ansible.com/ansible/latest/user_guide/index.html#getting-started).
+
+These two components combined with the OpenShift virtualization platform are targeted at greatly reducing complexity of infrastructure setup for research scenarios and for developing own smart contracts (Chaincode in Fabric-terms). This complexity is partly necessary for the system to work, we believe, however, that current cloud-offerings e.g from IBM, Oracle, Microsoft etc. are not primarily targeted at the research community and while they also attempt to reduce complexity, they do not tend to individual requirements and cannot fulfill e.g. high-performance constraints or allow simulations on large Blockchain-networks. 
+
+### Infrastructure Layer
+
+The core Blockchain network is based on Hyperledger Fabric and consists of several pre-provisioned Organizations (in the technical, Fabric-specific sense of the word) with variable number of Peers and Channels. There are also a number of Orderer Organizations which host the Ordering Service. The number of Peers or Orderers per organization varies and can range from 1 to several hundred. Thus, requirements for scenarios with large number of Peers or Orderers can be satisifed.
+
+Each scenario gets assigned the required number of resources (Organizations, Peers, Ordering Nodes). This can be changed dynamically, should it be necessary.
+
+All Scenario data are isolated from each other by the use of Channels. Thus it is not possible for separate Scenarios to read each others data (separate Ledgers).
+
+By using a pre-provisioned generic Fabric infrastructure in combination with Channels, we allow for a low barrier to usage while maintaing isolation and privacy of tenants.
+
+### Requesting access for scenarios
+
+🚧
+We will be publishing updates here very soon so make sure to revisit this page.
+
+### Lifecycle Policy
+
+One of the requirements for the platform is that we need to make sure that the infrastructure is available to approved scenarios - current and future. Our computational resources are, however, limited and thus it is importat to set expiration dates on all scenarios. Generally, all projects get access for 6 months. After this period an extension is required to continue using the infrastructure. Extensions are also generally granted on a 6-month basis but may also be individually negotiated when appropriate.
