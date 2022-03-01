@@ -61,9 +61,15 @@ For the scenario IT Supply Chain - development of complex software and cyber-phy
 
 🚧 This section is currently under construction.
 
+Here a different structure is proposed for systems where it is known or assumed from the start that they will affect more than simply one organization.
+
 | Actor  |  Details |
 |----------|:-------------|
 |(Project) impulse giver| e.g. Startups, ventures of public/private enterprises, research organizations, R&D departments etc.|
+|State/Political bodies|Political organizations or organizational units involved in the system design.|
+|Directly affected groups|Groups of persons who know themselves to or have been identified (e.g. through an impact study) as having direct advantages or disadvantages from the System.|
+|Indirectly affected groups|Groups of persons who are advantaged or disadvantaged, however indirectly and not through the first-order effects of the system. |
+|Classcial roles| The roles described in the section above with the exception of the requiring organization still apply.|
 
 ## Scenario Architectures and Categories
 
