@@ -1,0 +1,1004 @@
+[
+    {
+        "id": "c7765fab747458c9",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "62bb31282c7b6122",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "635f3d750c8df4ce",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "0b3a060af6adb877",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.1.1",
+        "port": "1884",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "a2bb49b55426dc10",
+        "type": "function",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "func": "\nmsg.command1 = `cd && cd minifabric-arm64 && ./minifab invoke -n metahf -p '\\\"changeOwner\\\", \\\"${msg.key}\\\"'`;\n\nmsg.command2 = `cd && cd minifabric-arm64 && ./minifab invoke -n metahf -p '\\\"createAsset\\\", \\\"${msg.key}_SMALL\\\", \\\"\\\", \\\"Asset\\\", \\\"1\\\", \\\"kg\\\", \\\"[geoLocation, status, originCountry, transportType, description, greenhouseGasEmissions]\\\", \\\"[[${msg.lat}AND${msg.long}], Verkauft, ${global.get(\"countryName\")}, 1, Premium Kaffee, 123]\\\"'`;\n\n\nmsg.command3 = `cd && cd minifabric-arm64 && ./minifab invoke -n metahf -p '\\\"addPredecessor\\\", \\\"${msg.key}\\\", \\\"${msg.key}_SMALL\\\", \\\"1\\\", \\\"0\\\"'`;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1280,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1a7ad4a2b80db8c3",
+        "type": "exec",
+        "z": "62bb31282c7b6122",
+        "command": "",
+        "addpay": "command1",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 1430,
+        "y": 360,
+        "wires": [
+            [
+                "5e1cec551f08dc3f",
+                "78b4f78981378ea9",
+                "18e66d5a928f96e4"
+            ],
+            [
+                "5e1cec551f08dc3f"
+            ],
+            [
+                "5e1cec551f08dc3f"
+            ]
+        ]
+    },
+    {
+        "id": "5e1cec551f08dc3f",
+        "type": "debug",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1600,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "5d8af2ac959346d8",
+        "type": "exec",
+        "z": "62bb31282c7b6122",
+        "command": "",
+        "addpay": "command3",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 1790,
+        "y": 340,
+        "wires": [
+            [
+                "abffd844ca4a1203"
+            ],
+            [
+                "abffd844ca4a1203"
+            ],
+            [
+                "abffd844ca4a1203"
+            ]
+        ]
+    },
+    {
+        "id": "abffd844ca4a1203",
+        "type": "debug",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2030,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "3df24bd7af0f42f7",
+        "type": "change",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "key",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 360,
+        "wires": [
+            [
+                "a2bb49b55426dc10"
+            ]
+        ]
+    },
+    {
+        "id": "78b4f78981378ea9",
+        "type": "exec",
+        "z": "62bb31282c7b6122",
+        "command": "",
+        "addpay": "command2",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 1590,
+        "y": 360,
+        "wires": [
+            [
+                "5d8af2ac959346d8",
+                "8c72a38e033e9283"
+            ],
+            [
+                "8c72a38e033e9283"
+            ],
+            [
+                "8c72a38e033e9283"
+            ]
+        ]
+    },
+    {
+        "id": "8c72a38e033e9283",
+        "type": "debug",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1810,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "726168d87dcb7298",
+        "type": "random",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "low": 1,
+        "high": "3",
+        "inte": "true",
+        "property": "payload",
+        "x": 560,
+        "y": 360,
+        "wires": [
+            [
+                "3d32309c566f307b",
+                "e04487d1a74d92d4"
+            ]
+        ]
+    },
+    {
+        "id": "3d32309c566f307b",
+        "type": "switch",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 710,
+        "y": 360,
+        "wires": [
+            [
+                "d989659557b2bc4c"
+            ],
+            [
+                "d423eecadfa6485d"
+            ],
+            [
+                "c1965b5bf39f68dd"
+            ]
+        ]
+    },
+    {
+        "id": "d989659557b2bc4c",
+        "type": "change",
+        "z": "62bb31282c7b6122",
+        "name": "Supermarkt München",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lat",
+                "pt": "msg",
+                "to": "hallo",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "long",
+                "pt": "msg",
+                "to": "-348.321533",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "countryName",
+                "pt": "msg",
+                "to": "Supermarkt München",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "transportType3",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 940,
+        "y": 320,
+        "wires": [
+            [
+                "a2bb49b55426dc10"
+            ]
+        ]
+    },
+    {
+        "id": "d423eecadfa6485d",
+        "type": "change",
+        "z": "62bb31282c7b6122",
+        "name": "Supermarkt Hamburg",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lat",
+                "pt": "msg",
+                "to": "53.448807",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "long",
+                "pt": "msg",
+                "to": "-350.013428",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "countryName",
+                "pt": "msg",
+                "to": "Supermarkt Hamburg",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "transportType3",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 940,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c1965b5bf39f68dd",
+        "type": "change",
+        "z": "62bb31282c7b6122",
+        "name": "Supermarkt Berlin",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lat",
+                "pt": "msg",
+                "to": "52.496160",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "long",
+                "pt": "msg",
+                "to": "-346.541748",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "countryName",
+                "pt": "msg",
+                "to": "Supermarkt Berlin",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "transportType3",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 930,
+        "y": 400,
+        "wires": [
+            [
+                "a2bb49b55426dc10"
+            ]
+        ]
+    },
+    {
+        "id": "a69239c9d3cddee8",
+        "type": "mqtt in",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "topic": "/originCountry",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "0b3a060af6adb877",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 260,
+        "wires": [
+            [
+                "288111ce260b7201"
+            ]
+        ]
+    },
+    {
+        "id": "288111ce260b7201",
+        "type": "change",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "countryName",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "18e66d5a928f96e4",
+        "type": "debug",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "lat",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1680,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "08eab0eb9cc2a005",
+        "type": "inject",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 520,
+        "wires": [
+            [
+                "3df24bd7af0f42f7"
+            ]
+        ]
+    },
+    {
+        "id": "e04487d1a74d92d4",
+        "type": "debug",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "344d8041b4be20eb",
+        "type": "inject",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 680,
+        "wires": [
+            [
+                "873b96d0795f5063"
+            ]
+        ]
+    },
+    {
+        "id": "cdc379a6cc22ade9",
+        "type": "random",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "low": 1,
+        "high": 10,
+        "inte": "true",
+        "property": "payload",
+        "x": 620,
+        "y": 640,
+        "wires": [
+            [
+                "e04487d1a74d92d4"
+            ]
+        ]
+    },
+    {
+        "id": "873b96d0795f5063",
+        "type": "change",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "key",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 660,
+        "wires": [
+            [
+                "cdc379a6cc22ade9"
+            ]
+        ]
+    },
+    {
+        "id": "7e612157468a1e84",
+        "type": "mqtt in",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "topic": "/startRetail",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "0b3a060af6adb877",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 230,
+        "y": 840,
+        "wires": [
+            [
+                "7096e08bcc441447"
+            ]
+        ]
+    },
+    {
+        "id": "7096e08bcc441447",
+        "type": "change",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "key",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 840,
+        "wires": [
+            [
+                "bd02ccbe1bea526b"
+            ]
+        ]
+    },
+    {
+        "id": "bd02ccbe1bea526b",
+        "type": "random",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "low": 1,
+        "high": "3",
+        "inte": "true",
+        "property": "payload",
+        "x": 660,
+        "y": 840,
+        "wires": [
+            [
+                "f1980cc8de4622d9"
+            ]
+        ]
+    },
+    {
+        "id": "f1980cc8de4622d9",
+        "type": "switch",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 840,
+        "y": 840,
+        "wires": [
+            [
+                "158eb822bd0ff515"
+            ],
+            [
+                "b14ff6eb6399cafc"
+            ],
+            [
+                "f84fb27e4c66c937"
+            ]
+        ]
+    },
+    {
+        "id": "158eb822bd0ff515",
+        "type": "change",
+        "z": "62bb31282c7b6122",
+        "name": "Supermarkt München",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lat",
+                "pt": "msg",
+                "to": "hallo",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "long",
+                "pt": "msg",
+                "to": "-348.321533",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "countryName",
+                "pt": "msg",
+                "to": "Supermarkt München",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "transportType3",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1040,
+        "y": 800,
+        "wires": [
+            [
+                "15b9dcaa280d78de"
+            ]
+        ]
+    },
+    {
+        "id": "b14ff6eb6399cafc",
+        "type": "change",
+        "z": "62bb31282c7b6122",
+        "name": "Supermarkt Hamburg",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lat",
+                "pt": "msg",
+                "to": "53.448807",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "long",
+                "pt": "msg",
+                "to": "-350.013428",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "countryName",
+                "pt": "msg",
+                "to": "Supermarkt Hamburg",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "transportType3",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1040,
+        "y": 860,
+        "wires": [
+            [
+                "15b9dcaa280d78de"
+            ]
+        ]
+    },
+    {
+        "id": "f84fb27e4c66c937",
+        "type": "change",
+        "z": "62bb31282c7b6122",
+        "name": "Supermarkt Berlin",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lat",
+                "pt": "msg",
+                "to": "52.496160",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "long",
+                "pt": "msg",
+                "to": "-346.541748",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "countryName",
+                "pt": "msg",
+                "to": "Supermarkt Berlin",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "transportType3",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1030,
+        "y": 920,
+        "wires": [
+            [
+                "15b9dcaa280d78de"
+            ]
+        ]
+    },
+    {
+        "id": "86f4964c9b9bacd9",
+        "type": "inject",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 940,
+        "wires": [
+            [
+                "7096e08bcc441447"
+            ]
+        ]
+    },
+    {
+        "id": "15b9dcaa280d78de",
+        "type": "function",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "func": "\nmsg.command1 = `cd && cd minifabric-arm64 && ./minifab invoke -n metahf -p '\\\"changeOwner\\\", \\\"${msg.key}\\\"'`;\n\nmsg.command2 = `cd && cd minifabric-arm64 && ./minifab invoke -n metahf -p '\\\"createAsset\\\", \\\"${msg.key}_SMALL\\\", \\\"\\\", \\\"Asset\\\", \\\"1\\\", \\\"kg\\\", \\\"[geoLocation, status, originCountry, transportType, description, greenhouseGasEmissions]\\\", \\\"[[${msg.lat}AND${msg.long}], Verkauft, ${global.get(\"countryName\")}, 1, Premium Kaffee, 123]\\\"'`;\n\n\nmsg.command3 = `cd && cd minifabric-arm64 && ./minifab invoke -n metahf -p '\\\"addPredecessor\\\", \\\"${msg.key}\\\", \\\"${msg.key}_SMALL\\\", \\\"1\\\", \\\"0\\\"'`;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1320,
+        "y": 880,
+        "wires": [
+            [
+                "40d0c953b7a3205c"
+            ]
+        ]
+    },
+    {
+        "id": "40d0c953b7a3205c",
+        "type": "exec",
+        "z": "62bb31282c7b6122",
+        "command": "",
+        "addpay": "command1",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 1490,
+        "y": 880,
+        "wires": [
+            [
+                "c05b23e6118996f5",
+                "5a387a32f59462eb"
+            ],
+            [
+                "5a387a32f59462eb"
+            ],
+            [
+                "5a387a32f59462eb"
+            ]
+        ]
+    },
+    {
+        "id": "c05b23e6118996f5",
+        "type": "exec",
+        "z": "62bb31282c7b6122",
+        "command": "",
+        "addpay": "command2",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 1650,
+        "y": 880,
+        "wires": [
+            [
+                "34faf38d7561d844",
+                "5a387a32f59462eb"
+            ],
+            [
+                "5a387a32f59462eb"
+            ],
+            [
+                "5a387a32f59462eb"
+            ]
+        ]
+    },
+    {
+        "id": "34faf38d7561d844",
+        "type": "exec",
+        "z": "62bb31282c7b6122",
+        "command": "",
+        "addpay": "command3",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 1810,
+        "y": 880,
+        "wires": [
+            [
+                "5a387a32f59462eb"
+            ],
+            [
+                "5a387a32f59462eb"
+            ],
+            [
+                "5a387a32f59462eb"
+            ]
+        ]
+    },
+    {
+        "id": "5a387a32f59462eb",
+        "type": "debug",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1970,
+        "y": 780,
+        "wires": []
+    }
+]

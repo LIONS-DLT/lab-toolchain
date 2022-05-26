@@ -1,0 +1,237 @@
+[
+    {
+        "id": "62bb31282c7b6122",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "0b3a060af6adb877",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.1.1",
+        "port": "1884",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "761ae7474a2a179b",
+        "type": "mqtt in",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "topic": "/startLogistic",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "0b3a060af6adb877",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 360,
+        "wires": [
+            [
+                "3df24bd7af0f42f7"
+            ]
+        ]
+    },
+    {
+        "id": "a2bb49b55426dc10",
+        "type": "function",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "func": "\nmsg.command1 = `cd && cd minifabric-arm64 && ./minifab invoke -n metahf -p '\\\"changeOwner\\\", \\\"${msg.key}\\\"'`;\n\nmsg.command2 = `cd && cd minifabric-arm64 && ./minifab invoke -n metahf -p '\\\"setReceiver\\\", \\\"${msg.key}\\\", \\\"production-com\\\"'`;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 360,
+        "wires": [
+            [
+                "1a7ad4a2b80db8c3"
+            ]
+        ]
+    },
+    {
+        "id": "1a7ad4a2b80db8c3",
+        "type": "exec",
+        "z": "62bb31282c7b6122",
+        "command": "",
+        "addpay": "command1",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 690,
+        "y": 360,
+        "wires": [
+            [
+                "5e1cec551f08dc3f",
+                "5d8af2ac959346d8"
+            ],
+            [
+                "5e1cec551f08dc3f"
+            ],
+            [
+                "5e1cec551f08dc3f"
+            ]
+        ]
+    },
+    {
+        "id": "5e1cec551f08dc3f",
+        "type": "debug",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "5d8af2ac959346d8",
+        "type": "exec",
+        "z": "62bb31282c7b6122",
+        "command": "",
+        "addpay": "command2",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 870,
+        "y": 360,
+        "wires": [
+            [
+                "abffd844ca4a1203",
+                "258ed9112fe47c0b"
+            ],
+            [
+                "abffd844ca4a1203"
+            ],
+            [
+                "abffd844ca4a1203"
+            ]
+        ]
+    },
+    {
+        "id": "abffd844ca4a1203",
+        "type": "debug",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1090,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "491c595783e22447",
+        "type": "mqtt out",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "topic": "/startProduction",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "0b3a060af6adb877",
+        "x": 1340,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "258ed9112fe47c0b",
+        "type": "change",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "key",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1110,
+        "y": 280,
+        "wires": [
+            [
+                "491c595783e22447"
+            ]
+        ]
+    },
+    {
+        "id": "3df24bd7af0f42f7",
+        "type": "change",
+        "z": "62bb31282c7b6122",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "key",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 360,
+        "wires": [
+            [
+                "a2bb49b55426dc10"
+            ]
+        ]
+    }
+]
