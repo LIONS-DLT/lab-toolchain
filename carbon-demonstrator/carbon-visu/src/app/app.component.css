@@ -15,12 +15,29 @@
     left: 80%;
   }
 
+
+  #dtec {
+    width: 20%;
+    z-index: 1;
+    position: absolute;
+    top: 85%;
+    left: 78%;
+  }
+
   #nutrisafe {
     width: 15%;
     z-index: 1;
     position: absolute;
     top: 0%;
     left: 0%;
+  }
+
+  #lions {
+    width: 5%;
+    z-index: 1;
+    position: absolute;
+    top: 2%;
+    left: 2%;
   }
 
   #unibw{
