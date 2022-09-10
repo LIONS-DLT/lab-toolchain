@@ -1,24 +1,44 @@
 [
     {
-        "id": "471e562d.d40178",
-        "type": "tab",
-        "label": "Flow 1",
-        "disabled": false,
-        "info": ""
-    },
-    {
-        "id": "d59a0df1.539e3",
+        "id": "b12eb940d0ec9933",
         "type": "tab",
         "label": "Blockchain-Transactions",
         "disabled": false,
-        "info": ""
+        "info": "",
+        "env": []
     },
     {
-        "id": "5002fc1e.181174",
+        "id": "471e562d.d40178",
         "type": "tab",
         "label": "MQTT-Testing",
         "disabled": false,
         "info": ""
+    },
+    {
+        "id": "c8d4bc7efb28bb17",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.1.1",
+        "port": "1884",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
     },
     {
         "id": "78b6cd65.6a2e74",
@@ -46,115 +66,1635 @@
         "sessionExpiry": ""
     },
     {
-        "id": "51dcf7a9.36ac38",
-        "type": "mqtt-broker",
-        "name": "",
-        "broker": "192.168.1.1",
-        "port": "1884",
-        "clientid": "",
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
-        "willMsg": {},
-        "sessionExpiry": ""
-    },
-    {
-        "id": "18775a33.189446",
-        "type": "data-generator",
-        "z": "471e562d.d40178",
-        "name": "",
-        "field": "payload",
-        "fieldType": "msg",
-        "syntax": "text",
-        "template": "{\n    \"name\": \"{{firstName}} {{lastName}}\",\n    \"work\": \"{{company}}\",\n    \"email\": \"{{email}}\",\n    \"address\": \"{{int 1 100}} {{street}}\",\n    \"country\": \"{{country}}\"\n}",
-        "x": 1040,
-        "y": 80,
+        "id": "cea7f3c74739bede",
+        "type": "rpi-gpio in",
+        "z": "b12eb940d0ec9933",
+        "name": "coffeePlane",
+        "pin": "4",
+        "intype": "down",
+        "debounce": "50",
+        "read": false,
+        "bcm": true,
+        "x": 70,
+        "y": 700,
         "wires": [
             [
-                "f40a6dba.bb4ee"
+                "b22312fd27b04eb8"
             ]
         ]
     },
     {
-        "id": "f40a6dba.bb4ee",
+        "id": "7506690fe6007ca8",
         "type": "debug",
-        "z": "471e562d.d40178",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "jsonata",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 1260,
-        "y": 140,
-        "wires": []
-    },
-    {
-        "id": "d8aad851.fa88a8",
-        "type": "status",
-        "z": "471e562d.d40178",
-        "name": "",
-        "scope": null,
-        "x": 1230,
-        "y": 260,
-        "wires": [
-            [
-                "f40a6dba.bb4ee"
-            ]
-        ]
-    },
-    {
-        "id": "3247d315.71c61c",
-        "type": "mqtt in",
-        "z": "471e562d.d40178",
-        "name": "",
-        "topic": "test",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "78b6cd65.6a2e74",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "x": 860,
-        "y": 220,
-        "wires": [
-            [
-                "7e3f6cbe.83c934",
-                "18775a33.189446"
-            ]
-        ]
-    },
-    {
-        "id": "7e3f6cbe.83c934",
-        "type": "debug",
-        "z": "471e562d.d40178",
+        "z": "b12eb940d0ec9933",
         "name": "",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
+        "complete": "key",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1050,
-        "y": 220,
+        "x": 3080,
+        "y": 260,
         "wires": []
+    },
+    {
+        "id": "24d029813965f41f",
+        "type": "random",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "low": 1,
+        "high": "3",
+        "inte": "true",
+        "property": "payload",
+        "x": 360,
+        "y": 360,
+        "wires": [
+            [
+                "d0b3432af3f12a1a"
+            ]
+        ]
+    },
+    {
+        "id": "3de2ded8d8e359fc",
+        "type": "inject",
+        "z": "b12eb940d0ec9933",
+        "name": "Start",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "1",
+        "topic": "",
+        "payloadType": "date",
+        "x": 2610,
+        "y": 240,
+        "wires": [
+            [
+                "24d029813965f41f"
+            ]
+        ]
+    },
+    {
+        "id": "d0b3432af3f12a1a",
+        "type": "switch",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 450,
+        "y": 420,
+        "wires": [
+            [
+                "0b20b975a8e27889"
+            ],
+            [
+                "a1a3e625f387854b"
+            ],
+            [
+                "e612f4ced0bc6156"
+            ]
+        ]
+    },
+    {
+        "id": "0b20b975a8e27889",
+        "type": "change",
+        "z": "b12eb940d0ec9933",
+        "name": "Abbau Brasilien",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lat1",
+                "pt": "global",
+                "to": "-12.640338",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "long1",
+                "pt": "global",
+                "to": "-51.152344",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "countryName1",
+                "pt": "global",
+                "to": "Abbaugebiet Brasilien",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "transportType1",
+                "pt": "global",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 380,
+        "wires": [
+            [
+                "7d812249a42f82ba"
+            ]
+        ]
+    },
+    {
+        "id": "e9b996f66c9d853e",
+        "type": "switch",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 970,
+        "y": 420,
+        "wires": [
+            [
+                "026d7912a4d84ea0"
+            ],
+            [
+                "3614a09858e769a8"
+            ],
+            [
+                "a219d5e3eabe2a50"
+            ]
+        ]
+    },
+    {
+        "id": "7d812249a42f82ba",
+        "type": "random",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "low": 1,
+        "high": "3",
+        "inte": "true",
+        "property": "payload",
+        "x": 820,
+        "y": 420,
+        "wires": [
+            [
+                "e9b996f66c9d853e",
+                "79932ff557beecf6"
+            ]
+        ]
+    },
+    {
+        "id": "026d7912a4d84ea0",
+        "type": "change",
+        "z": "b12eb940d0ec9933",
+        "name": "Hafen Brasilien",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lat2",
+                "pt": "global",
+                "to": "-3.743671",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "long2",
+                "pt": "global",
+                "to": "-38.518066",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "countryName2",
+                "pt": "global",
+                "to": "Hafen Brasilien",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "transportType2",
+                "pt": "global",
+                "to": "2",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1180,
+        "y": 380,
+        "wires": [
+            [
+                "726168d87dcb7298"
+            ]
+        ]
+    },
+    {
+        "id": "ee83bb3de2edb569",
+        "type": "function",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "func": "var json = {};\nvar path = [];\njson.path = path;\n\n\npath1 = {\n    \"name\": global.get(\"countryName1\"),\n    \"long\": global.get(\"long1\"),\n    \"lat\": global.get(\"lat1\"),\n    \"transportType\": global.get(\"transportType1\")\n}\n\npath2 = {\n    \"name\": global.get(\"countryName2\"),\n    \"long\": global.get(\"long2\"),\n    \"lat\": global.get(\"lat2\"),\n    \"transportType\": global.get(\"transportType2\")\n}\n\npath3 = {\n    \"name\": global.get(\"countryName3\"),\n    \"long\": global.get(\"long3\"),\n    \"lat\": global.get(\"lat3\"),\n    \"transportType\": global.get(\"transportType3\")\n}\n\npath4 = {\n    \"name\": global.get(\"countryName4\"),\n    \"long\": global.get(\"long4\"),\n    \"lat\": global.get(\"lat4\"),\n    \"transportType\": global.get(\"transportType4\")\n}\n\njson[\"duration\"] = 120000\njson.path.push(path1);\njson.path.push(path2);\njson.path.push(path3);\njson.path.push(path4);\n\n\n\nmsg.payload = json\n\nmsg.key = new Date().getTime();\nglobal.set(\"key\", msg.key);\n\nmsg.command = `cd && cd minifabric-arm64 && ./minifab invoke -n metahf -p '\\\"createAsset\\\", \\\"${global.get(\"key\")}\\\", \\\"\\\", \\\"Asset\\\", \\\"60\\\", \\\"kg\\\", \\\"[geoLocation, status, originCountry, transportType, description, greenhouseGasEmissions]\\\", \\\"[[${global.get(\"lat1\")}AND${global.get(\"long1\")}, ${global.get(\"lat2\")}AND${global.get(\"long2\")}, ${global.get(\"lat3\")}AND${global.get(\"long3\")}, ${global.get(\"lat4\")}AND${global.get(\"long4\")}], Verkauft, ${global.get(\"countryName1\")}, ${global.get(\"transportType1\")}, Premium Kaffee, 123]\\\"'`;\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2600,
+        "y": 420,
+        "wires": [
+            [
+                "11deba92b87030f5",
+                "cf9b5a4ebed140af",
+                "8865a19afbb5533f",
+                "1763305a7c65e36c"
+            ]
+        ]
+    },
+    {
+        "id": "cf9b5a4ebed140af",
+        "type": "debug",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 3100,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "a1a3e625f387854b",
+        "type": "change",
+        "z": "b12eb940d0ec9933",
+        "name": "Abbau Peru",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lat1",
+                "pt": "global",
+                "to": "-9.189967",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "long1",
+                "pt": "global",
+                "to": "-75.015152",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "countryName1",
+                "pt": "global",
+                "to": "Abbaugebiet Peru",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "transportType1",
+                "pt": "global",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 420,
+        "wires": [
+            [
+                "7d812249a42f82ba"
+            ]
+        ]
+    },
+    {
+        "id": "e612f4ced0bc6156",
+        "type": "change",
+        "z": "b12eb940d0ec9933",
+        "name": "Abbau Kolumbien",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lat1",
+                "pt": "global",
+                "to": "4.570868",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "long1",
+                "pt": "global",
+                "to": "-74.297333",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "countryName1",
+                "pt": "global",
+                "to": "Abbaugebiet Kolumbien",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "transportType1",
+                "pt": "global",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 630,
+        "y": 460,
+        "wires": [
+            [
+                "7d812249a42f82ba"
+            ]
+        ]
+    },
+    {
+        "id": "11deba92b87030f5",
+        "type": "mqtt out",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "topic": "/path",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "c8d4bc7efb28bb17",
+        "x": 3110,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "3614a09858e769a8",
+        "type": "change",
+        "z": "b12eb940d0ec9933",
+        "name": "Hafen Peru",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lat2",
+                "pt": "global",
+                "to": "-12.404389",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "long2",
+                "pt": "global",
+                "to": "-76.860352",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "countryName2",
+                "pt": "global",
+                "to": "Hafen Peru",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "transportType2",
+                "pt": "global",
+                "to": "2",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1170,
+        "y": 420,
+        "wires": [
+            [
+                "726168d87dcb7298"
+            ]
+        ]
+    },
+    {
+        "id": "a219d5e3eabe2a50",
+        "type": "change",
+        "z": "b12eb940d0ec9933",
+        "name": "Hafen Kolumbien",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lat2",
+                "pt": "global",
+                "to": "10.978943",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "long2",
+                "pt": "global",
+                "to": "-74.827881",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "countryName2",
+                "pt": "global",
+                "to": "Hafen Kolumbien",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "transportType2",
+                "pt": "global",
+                "to": "2",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1190,
+        "y": 460,
+        "wires": [
+            [
+                "726168d87dcb7298"
+            ]
+        ]
+    },
+    {
+        "id": "3d32309c566f307b",
+        "type": "switch",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 1530,
+        "y": 420,
+        "wires": [
+            [
+                "d989659557b2bc4c"
+            ],
+            [
+                "d423eecadfa6485d"
+            ],
+            [
+                "c1965b5bf39f68dd"
+            ]
+        ]
+    },
+    {
+        "id": "d989659557b2bc4c",
+        "type": "change",
+        "z": "b12eb940d0ec9933",
+        "name": "Hafen Deutschland",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lat3",
+                "pt": "global",
+                "to": "53.510918",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "long3",
+                "pt": "global",
+                "to": "10.052490",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "countryName3",
+                "pt": "global",
+                "to": "Hafen Deutschland",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "transportType3",
+                "pt": "global",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1750,
+        "y": 380,
+        "wires": [
+            [
+                "c0ad1103edf6fdac"
+            ]
+        ]
+    },
+    {
+        "id": "d423eecadfa6485d",
+        "type": "change",
+        "z": "b12eb940d0ec9933",
+        "name": "Hafen Italien",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lat3",
+                "pt": "global",
+                "to": "41.799983",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "long3",
+                "pt": "global",
+                "to": "12.447510",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "countryName3",
+                "pt": "global",
+                "to": "Hafen Italien",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "transportType3",
+                "pt": "global",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1730,
+        "y": 420,
+        "wires": [
+            [
+                "c0ad1103edf6fdac"
+            ]
+        ]
+    },
+    {
+        "id": "c1965b5bf39f68dd",
+        "type": "change",
+        "z": "b12eb940d0ec9933",
+        "name": "Hafen Griechenland",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lat3",
+                "pt": "global",
+                "to": "37.870517",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "long3",
+                "pt": "global",
+                "to": "23.763428",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "countryName3",
+                "pt": "global",
+                "to": "Hafen Griechenland",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "transportType3",
+                "pt": "global",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1760,
+        "y": 460,
+        "wires": [
+            [
+                "c0ad1103edf6fdac"
+            ]
+        ]
+    },
+    {
+        "id": "726168d87dcb7298",
+        "type": "random",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "low": 1,
+        "high": "3",
+        "inte": "true",
+        "property": "payload",
+        "x": 1380,
+        "y": 420,
+        "wires": [
+            [
+                "3d32309c566f307b"
+            ]
+        ]
+    },
+    {
+        "id": "c0ad1103edf6fdac",
+        "type": "random",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "low": 1,
+        "high": "3",
+        "inte": "true",
+        "property": "payload",
+        "x": 1980,
+        "y": 420,
+        "wires": [
+            [
+                "47710b8eeac24d2c"
+            ]
+        ]
+    },
+    {
+        "id": "47710b8eeac24d2c",
+        "type": "switch",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 2130,
+        "y": 420,
+        "wires": [
+            [
+                "843e8083cea404ba"
+            ],
+            [
+                "9095a8f20119fcd0"
+            ],
+            [
+                "eaed9b81bafd1dc2"
+            ]
+        ]
+    },
+    {
+        "id": "843e8083cea404ba",
+        "type": "change",
+        "z": "b12eb940d0ec9933",
+        "name": "Ziel Deutschland",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lat4",
+                "pt": "global",
+                "to": "48.030346",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "long4",
+                "pt": "global",
+                "to": "11.634521",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "countryName4",
+                "pt": "global",
+                "to": "München",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "transportType4",
+                "pt": "global",
+                "to": "2",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2350,
+        "y": 380,
+        "wires": [
+            [
+                "ee83bb3de2edb569"
+            ]
+        ]
+    },
+    {
+        "id": "9095a8f20119fcd0",
+        "type": "change",
+        "z": "b12eb940d0ec9933",
+        "name": "Ziel Frankreich",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lat4",
+                "pt": "global",
+                "to": "48.759810",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "long4",
+                "pt": "global",
+                "to": "2.340088",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "countryName4",
+                "pt": "global",
+                "to": "Paris",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "transportType4",
+                "pt": "global",
+                "to": "2",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2340,
+        "y": 420,
+        "wires": [
+            [
+                "ee83bb3de2edb569"
+            ]
+        ]
+    },
+    {
+        "id": "eaed9b81bafd1dc2",
+        "type": "change",
+        "z": "b12eb940d0ec9933",
+        "name": "Ziel Österreich",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lat4",
+                "pt": "global",
+                "to": "48.129434",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "long4",
+                "pt": "global",
+                "to": "16.413574",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "countryName4",
+                "pt": "global",
+                "to": "Wien",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "transportType4",
+                "pt": "global",
+                "to": "2",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2340,
+        "y": 460,
+        "wires": [
+            [
+                "ee83bb3de2edb569"
+            ]
+        ]
+    },
+    {
+        "id": "1763305a7c65e36c",
+        "type": "exec",
+        "z": "b12eb940d0ec9933",
+        "command": "",
+        "addpay": "command",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 2790,
+        "y": 360,
+        "wires": [
+            [
+                "cf9b5a4ebed140af",
+                "7506690fe6007ca8",
+                "184b222bce8ecd98"
+            ],
+            [
+                "cf9b5a4ebed140af"
+            ],
+            [
+                "cf9b5a4ebed140af"
+            ]
+        ]
+    },
+    {
+        "id": "954565dbbe215386",
+        "type": "mqtt out",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "topic": "/startLogistic",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "c8d4bc7efb28bb17",
+        "x": 3750,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "ad9561e10ad87f88",
+        "type": "change",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "key",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 3510,
+        "y": 260,
+        "wires": [
+            [
+                "954565dbbe215386"
+            ]
+        ]
+    },
+    {
+        "id": "f1de9b838b64d491",
+        "type": "exec",
+        "z": "b12eb940d0ec9933",
+        "command": "",
+        "addpay": "command",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 3290,
+        "y": 340,
+        "wires": [
+            [
+                "f8abf62bb66fefde",
+                "ad9561e10ad87f88"
+            ],
+            [
+                "f8abf62bb66fefde"
+            ],
+            [
+                "f8abf62bb66fefde"
+            ]
+        ]
+    },
+    {
+        "id": "184b222bce8ecd98",
+        "type": "function",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "func": "\n\n\n\n\n\n\n\n\n\n\n\n\nmsg.command = `cd && cd minifabric-arm64 && ./minifab invoke -n metahf -p '\\\"setReceiver\\\", \\\"${msg.key}\\\", \\\"logistics-com\\\"'`;\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3080,
+        "y": 340,
+        "wires": [
+            [
+                "f1de9b838b64d491"
+            ]
+        ]
+    },
+    {
+        "id": "f8abf62bb66fefde",
+        "type": "debug",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 3500,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "0f73de35e1d2186f",
+        "type": "mqtt out",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "topic": "/originCountry",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "c8d4bc7efb28bb17",
+        "x": 1240,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "79932ff557beecf6",
+        "type": "change",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "countryName1",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 980,
+        "y": 540,
+        "wires": [
+            [
+                "0f73de35e1d2186f"
+            ]
+        ]
+    },
+    {
+        "id": "1732b538f99b571b",
+        "type": "function",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "func": "var json = {};\nvar path = [];\njson.path = path;\n\n\npath4 = {\n    \"name\": global.get(\"countryName1\"),\n    \"long\": global.get(\"long1\"),\n    \"lat\": global.get(\"lat1\"),\n    \"transportType\": global.get(\"transportType1\")\n}\n\npath3 = {\n    \"name\": global.get(\"countryName2\"),\n    \"long\": global.get(\"long2\"),\n    \"lat\": global.get(\"lat2\"),\n    \"transportType\": global.get(\"transportType2\")\n}\n\npath2 = {\n    \"name\": global.get(\"countryName3\"),\n    \"long\": global.get(\"long3\"),\n    \"lat\": global.get(\"lat3\"),\n    \"transportType\": global.get(\"transportType3\")\n}\n\npath1 = {\n    \"name\": global.get(\"countryName4\"),\n    \"long\": global.get(\"long4\"),\n    \"lat\": global.get(\"lat4\"),\n    \"transportType\": global.get(\"transportType4\")\n}\n\njson[\"duration\"] = 30000\njson[\"alarm\"] = true\njson.path.push(path1);\njson.path.push(path2);\njson.path.push(path3);\njson.path.push(path4);\n\n\n\nmsg.payload = json\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 980,
+        "wires": [
+            [
+                "264215c62488e321",
+                "a145909eb852dcbe"
+            ]
+        ]
+    },
+    {
+        "id": "264215c62488e321",
+        "type": "mqtt out",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "topic": "/path",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "c8d4bc7efb28bb17",
+        "x": 530,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "cfcbba2bd6085c2d",
+        "type": "rpi-gpio in",
+        "z": "b12eb940d0ec9933",
+        "name": "Rückruf",
+        "pin": "17",
+        "intype": "down",
+        "debounce": "50",
+        "read": false,
+        "bcm": true,
+        "x": 70,
+        "y": 980,
+        "wires": [
+            [
+                "1732b538f99b571b"
+            ]
+        ]
+    },
+    {
+        "id": "4baf01cebd745130",
+        "type": "rpi-gpio in",
+        "z": "b12eb940d0ec9933",
+        "name": "coffeePlane",
+        "pin": "27",
+        "intype": "down",
+        "debounce": "50",
+        "read": false,
+        "bcm": true,
+        "x": 70,
+        "y": 640,
+        "wires": [
+            [
+                "8db007dd185a738d"
+            ]
+        ]
+    },
+    {
+        "id": "e94a15ba7b9301f7",
+        "type": "rpi-gpio in",
+        "z": "b12eb940d0ec9933",
+        "name": "Kompensation",
+        "pin": "22",
+        "intype": "down",
+        "debounce": "50",
+        "read": false,
+        "bcm": true,
+        "x": 100,
+        "y": 860,
+        "wires": [
+            [
+                "bb074809be7d9789"
+            ]
+        ]
+    },
+    {
+        "id": "1f38dd061883e54d",
+        "type": "rpi-gpio in",
+        "z": "b12eb940d0ec9933",
+        "name": "coffeePlane",
+        "pin": "10",
+        "intype": "down",
+        "debounce": "50",
+        "read": false,
+        "bcm": true,
+        "x": 70,
+        "y": 560,
+        "wires": [
+            [
+                "acc2b8daa67dbf59"
+            ]
+        ]
+    },
+    {
+        "id": "e13d409e5766ae4a",
+        "type": "rpi-gpio in",
+        "z": "b12eb940d0ec9933",
+        "name": "coffeePlane",
+        "pin": "9",
+        "intype": "down",
+        "debounce": "50",
+        "read": false,
+        "bcm": true,
+        "x": 70,
+        "y": 420,
+        "wires": [
+            [
+                "3e456aca75bb6eab"
+            ]
+        ]
+    },
+    {
+        "id": "a145909eb852dcbe",
+        "type": "debug",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "47ca4c837f3ef44f",
+        "type": "mqtt out",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "topic": "/carbon",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "c8d4bc7efb28bb17",
+        "x": 3120,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "8865a19afbb5533f",
+        "type": "function",
+        "z": "b12eb940d0ec9933",
+        "name": "carbon",
+        "func": "var json = {};\nvar path = [];\n\n\n\npath1 = {\n    \"actor\": \"Farmer\",\n    \"cap\": 2.5,\n    \"offset\": Math.round(((2 + Math.random()) + Number.EPSILON) * 100) / 100,\n \n}\n\npath2 = {\n    \"actor\": \"Logistics\",\n    \"cap\": 2.6,\n    \"offset\": Math.round(((2 + Math.random()) + Number.EPSILON) * 100) / 100,\n}\n\npath3 = {\n    \"actor\": \"Production\",\n    \"cap\": 2.8,\n    \"offset\": Math.round(((2 + Math.random()) + Number.EPSILON) * 100) / 100,\n}\n\npath4 = {\n    \"actor\": \"Retail\",\n    \"cap\": 2.8,\n    \"offset\": Math.round(((2 + Math.random()) + Number.EPSILON) * 100) / 100,\n}\n\nif (global.get(\"inputButton\") == 1){\n    path1[\"offset\"] = path1[\"offset\"] * (-0.5);\n    path3[\"offset\"] = path3[\"offset\"] * (-0.5);\n}\n\n\n\npath.push(path1);\npath.push(path2);\npath.push(path3);\npath.push(path4);\n\n\n\nmsg.payload = path\n\n\n\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2820,
+        "y": 600,
+        "wires": [
+            [
+                "47ca4c837f3ef44f",
+                "4dbc28fd75301796"
+            ]
+        ]
+    },
+    {
+        "id": "4dbc28fd75301796",
+        "type": "debug",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 3150,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "f5aee715cb67f885",
+        "type": "mqtt out",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "topic": "/carbon",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "c8d4bc7efb28bb17",
+        "x": 500,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "bb074809be7d9789",
+        "type": "change",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 860,
+        "wires": [
+            [
+                "f5aee715cb67f885"
+            ]
+        ]
+    },
+    {
+        "id": "acc2b8daa67dbf59",
+        "type": "change",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "inputButton",
+                "pt": "global",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 560,
+        "wires": [
+            [
+                "3e456aca75bb6eab"
+            ]
+        ]
+    },
+    {
+        "id": "8db007dd185a738d",
+        "type": "change",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "inputButton",
+                "pt": "global",
+                "to": "2",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 640,
+        "wires": [
+            [
+                "3e456aca75bb6eab"
+            ]
+        ]
+    },
+    {
+        "id": "b22312fd27b04eb8",
+        "type": "change",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "inputButton",
+                "pt": "global",
+                "to": "3",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 700,
+        "wires": [
+            [
+                "3e456aca75bb6eab"
+            ]
+        ]
+    },
+    {
+        "id": "a5a9bd6ac474575f",
+        "type": "inject",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "/clear",
+        "payload": "hello",
+        "payloadType": "str",
+        "x": 90,
+        "y": 1160,
+        "wires": [
+            [
+                "94b4a430e601b1ff"
+            ]
+        ]
+    },
+    {
+        "id": "94b4a430e601b1ff",
+        "type": "mqtt out",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "topic": "/clear",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "c8d4bc7efb28bb17",
+        "x": 310,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "11082e06882364f5",
+        "type": "inject",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 1080,
+        "wires": [
+            [
+                "1732b538f99b571b"
+            ]
+        ]
+    },
+    {
+        "id": "2d34ac046b6e9dca",
+        "type": "inject",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 500,
+        "wires": [
+            [
+                "acc2b8daa67dbf59"
+            ]
+        ]
+    },
+    {
+        "id": "abedc4a826f4058d",
+        "type": "inject",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 70,
+        "y": 820,
+        "wires": [
+            [
+                "bb074809be7d9789"
+            ]
+        ]
+    },
+    {
+        "id": "3e456aca75bb6eab",
+        "type": "function",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "func": "var cooldown = global.get(\"cooldown\");\n//node.warn({\"your_variable\":cooldown,\"msg\":msg.payload});\nmsg.payload = Date.now() - cooldown;\n\nif (msg.payload > 5000){\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nglobal.set(\"cooldown\",Date.now());",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 440,
+        "wires": [
+            [
+                "72ed78e29b1001bb",
+                "0f1a8d66061039d0",
+                "24d029813965f41f"
+            ]
+        ]
+    },
+    {
+        "id": "72ed78e29b1001bb",
+        "type": "debug",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "0f1a8d66061039d0",
+        "type": "change",
+        "z": "b12eb940d0ec9933",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "cooldown",
+                "pt": "global",
+                "to": "",
+                "tot": "date"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 630,
+        "y": 560,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "7be84e32.16967",
@@ -169,7 +1709,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "78b6cd65.6a2e74",
+        "broker": "c8d4bc7efb28bb17",
         "x": 650,
         "y": 120,
         "wires": []
@@ -274,7 +1814,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "78b6cd65.6a2e74",
+        "broker": "c8d4bc7efb28bb17",
         "x": 370,
         "y": 400,
         "wires": []
@@ -350,7 +1890,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "78b6cd65.6a2e74",
+        "broker": "c8d4bc7efb28bb17",
         "x": 780,
         "y": 380,
         "wires": []
@@ -397,7 +1937,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "78b6cd65.6a2e74",
+        "broker": "c8d4bc7efb28bb17",
         "x": 440,
         "y": 560,
         "wires": []
@@ -444,7 +1984,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "78b6cd65.6a2e74",
+        "broker": "c8d4bc7efb28bb17",
         "x": 440,
         "y": 640,
         "wires": []
@@ -491,7 +2031,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "78b6cd65.6a2e74",
+        "broker": "c8d4bc7efb28bb17",
         "x": 800,
         "y": 460,
         "wires": []
@@ -538,7 +2078,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "78b6cd65.6a2e74",
+        "broker": "c8d4bc7efb28bb17",
         "x": 840,
         "y": 540,
         "wires": []
@@ -598,2017 +2138,6 @@
         "wires": [
             [
                 "7be84e32.16967"
-            ]
-        ]
-    },
-    {
-        "id": "714a5afd.df79b4",
-        "type": "debug",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "key",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 3080,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "7168a238.a6477c",
-        "type": "inject",
-        "z": "d59a0df1.539e3",
-        "name": "Start",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": "1",
-        "topic": "",
-        "payloadType": "date",
-        "x": 2610,
-        "y": 240,
-        "wires": [
-            [
-                "1c291667.9efdea"
-            ]
-        ]
-    },
-    {
-        "id": "b29a65c0.053448",
-        "type": "switch",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "2",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "str"
-            }
-        ],
-        "checkall": "false",
-        "repair": false,
-        "outputs": 3,
-        "x": 450,
-        "y": 420,
-        "wires": [
-            [
-                "5fff4138.bbcf9"
-            ],
-            [
-                "f1a8dda3.bb9c3"
-            ],
-            [
-                "bcb980a2.d68bf"
-            ]
-        ]
-    },
-    {
-        "id": "5fff4138.bbcf9",
-        "type": "change",
-        "z": "d59a0df1.539e3",
-        "name": "Abbau Brasilien",
-        "rules": [
-            {
-                "t": "set",
-                "p": "lat1",
-                "pt": "global",
-                "to": "-12.640338",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "long1",
-                "pt": "global",
-                "to": "-51.152344",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "countryName1",
-                "pt": "global",
-                "to": "Abbaugebiet Brasilien",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "transportType1",
-                "pt": "global",
-                "to": "1",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 620,
-        "y": 380,
-        "wires": [
-            [
-                "956ba4c3.ceeeb8"
-            ]
-        ]
-    },
-    {
-        "id": "ab26b28c.dc9aa",
-        "type": "switch",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "2",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "str"
-            }
-        ],
-        "checkall": "false",
-        "repair": false,
-        "outputs": 3,
-        "x": 970,
-        "y": 420,
-        "wires": [
-            [
-                "9c1b2345.1038f"
-            ],
-            [
-                "8c07ead7.14efd8"
-            ],
-            [
-                "4ed73733.2ed0f8"
-            ]
-        ]
-    },
-    {
-        "id": "9c1b2345.1038f",
-        "type": "change",
-        "z": "d59a0df1.539e3",
-        "name": "Hafen Brasilien",
-        "rules": [
-            {
-                "t": "set",
-                "p": "lat2",
-                "pt": "global",
-                "to": "-3.743671",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "long2",
-                "pt": "global",
-                "to": "-38.518066",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "countryName2",
-                "pt": "global",
-                "to": "Hafen Brasilien",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "transportType2",
-                "pt": "global",
-                "to": "2",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1180,
-        "y": 380,
-        "wires": [
-            [
-                "20365e17.16ee72"
-            ]
-        ]
-    },
-    {
-        "id": "3c26e66b.70a3fa",
-        "type": "function",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "func": "var json = {};\nvar path = [];\njson.path = path;\n\n\npath1 = {\n    \"name\": global.get(\"countryName1\"),\n    \"long\": global.get(\"long1\"),\n    \"lat\": global.get(\"lat1\"),\n    \"transportType\": global.get(\"transportType1\")\n}\n\npath2 = {\n    \"name\": global.get(\"countryName2\"),\n    \"long\": global.get(\"long2\"),\n    \"lat\": global.get(\"lat2\"),\n    \"transportType\": global.get(\"transportType2\")\n}\n\npath3 = {\n    \"name\": global.get(\"countryName3\"),\n    \"long\": global.get(\"long3\"),\n    \"lat\": global.get(\"lat3\"),\n    \"transportType\": global.get(\"transportType3\")\n}\n\npath4 = {\n    \"name\": global.get(\"countryName4\"),\n    \"long\": global.get(\"long4\"),\n    \"lat\": global.get(\"lat4\"),\n    \"transportType\": global.get(\"transportType4\")\n}\n\njson[\"duration\"] = 120000\njson.path.push(path1);\njson.path.push(path2);\njson.path.push(path3);\njson.path.push(path4);\n\n\n\nmsg.payload = json\n\nmsg.key = new Date().getTime();\nglobal.set(\"key\", msg.key);\n\nmsg.command = `cd && cd minifabric-arm64 && ./minifab invoke -n metahf -p '\\\"createAsset\\\", \\\"${global.get(\"key\")}\\\", \\\"\\\", \\\"Asset\\\", \\\"60\\\", \\\"kg\\\", \\\"[geoLocation, status, originCountry, transportType, description, greenhouseGasEmissions]\\\", \\\"[[${global.get(\"lat1\")}AND${global.get(\"long1\")}, ${global.get(\"lat2\")}AND${global.get(\"long2\")}, ${global.get(\"lat3\")}AND${global.get(\"long3\")}, ${global.get(\"lat4\")}AND${global.get(\"long4\")}], Verkauft, ${global.get(\"countryName1\")}, ${global.get(\"transportType1\")}, Premium Kaffee, 123]\\\"'`;\n\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2600,
-        "y": 420,
-        "wires": [
-            [
-                "5bee622e.a244ac",
-                "1c588979.addff7",
-                "5e08ce69.bea8a",
-                "9f3d3768.9d40f8"
-            ]
-        ]
-    },
-    {
-        "id": "1c588979.addff7",
-        "type": "debug",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 3100,
-        "y": 420,
-        "wires": []
-    },
-    {
-        "id": "f1a8dda3.bb9c3",
-        "type": "change",
-        "z": "d59a0df1.539e3",
-        "name": "Abbau Peru",
-        "rules": [
-            {
-                "t": "set",
-                "p": "lat1",
-                "pt": "global",
-                "to": "-9.189967",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "long1",
-                "pt": "global",
-                "to": "-75.015152",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "countryName1",
-                "pt": "global",
-                "to": "Abbaugebiet Peru",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "transportType1",
-                "pt": "global",
-                "to": "1",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 610,
-        "y": 420,
-        "wires": [
-            [
-                "956ba4c3.ceeeb8"
-            ]
-        ]
-    },
-    {
-        "id": "bcb980a2.d68bf",
-        "type": "change",
-        "z": "d59a0df1.539e3",
-        "name": "Abbau Kolumbien",
-        "rules": [
-            {
-                "t": "set",
-                "p": "lat1",
-                "pt": "global",
-                "to": "4.570868",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "long1",
-                "pt": "global",
-                "to": "-74.297333",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "countryName1",
-                "pt": "global",
-                "to": "Abbaugebiet Kolumbien",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "transportType1",
-                "pt": "global",
-                "to": "1",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 630,
-        "y": 460,
-        "wires": [
-            [
-                "956ba4c3.ceeeb8"
-            ]
-        ]
-    },
-    {
-        "id": "5bee622e.a244ac",
-        "type": "mqtt out",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "topic": "/path",
-        "qos": "2",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "51dcf7a9.36ac38",
-        "x": 3110,
-        "y": 520,
-        "wires": []
-    },
-    {
-        "id": "8c07ead7.14efd8",
-        "type": "change",
-        "z": "d59a0df1.539e3",
-        "name": "Hafen Peru",
-        "rules": [
-            {
-                "t": "set",
-                "p": "lat2",
-                "pt": "global",
-                "to": "-12.404389",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "long2",
-                "pt": "global",
-                "to": "-76.860352",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "countryName2",
-                "pt": "global",
-                "to": "Hafen Peru",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "transportType2",
-                "pt": "global",
-                "to": "2",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1170,
-        "y": 420,
-        "wires": [
-            [
-                "20365e17.16ee72"
-            ]
-        ]
-    },
-    {
-        "id": "4ed73733.2ed0f8",
-        "type": "change",
-        "z": "d59a0df1.539e3",
-        "name": "Hafen Kolumbien",
-        "rules": [
-            {
-                "t": "set",
-                "p": "lat2",
-                "pt": "global",
-                "to": "10.978943",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "long2",
-                "pt": "global",
-                "to": "-74.827881",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "countryName2",
-                "pt": "global",
-                "to": "Hafen Kolumbien",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "transportType2",
-                "pt": "global",
-                "to": "2",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1190,
-        "y": 460,
-        "wires": [
-            [
-                "20365e17.16ee72"
-            ]
-        ]
-    },
-    {
-        "id": "e5a1524e.fe3c5",
-        "type": "switch",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "2",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "str"
-            }
-        ],
-        "checkall": "false",
-        "repair": false,
-        "outputs": 3,
-        "x": 1530,
-        "y": 420,
-        "wires": [
-            [
-                "4aa7dfc4.59369"
-            ],
-            [
-                "3bada72a.1b4cb8"
-            ],
-            [
-                "10807ec4.03fcc1"
-            ]
-        ]
-    },
-    {
-        "id": "4aa7dfc4.59369",
-        "type": "change",
-        "z": "d59a0df1.539e3",
-        "name": "Hafen Deutschland",
-        "rules": [
-            {
-                "t": "set",
-                "p": "lat3",
-                "pt": "global",
-                "to": "53.510918",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "long3",
-                "pt": "global",
-                "to": "10.052490",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "countryName3",
-                "pt": "global",
-                "to": "Hafen Deutschland",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "transportType3",
-                "pt": "global",
-                "to": "1",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1750,
-        "y": 380,
-        "wires": [
-            [
-                "32d17e05.9bbb82"
-            ]
-        ]
-    },
-    {
-        "id": "3bada72a.1b4cb8",
-        "type": "change",
-        "z": "d59a0df1.539e3",
-        "name": "Hafen Italien",
-        "rules": [
-            {
-                "t": "set",
-                "p": "lat3",
-                "pt": "global",
-                "to": "41.799983",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "long3",
-                "pt": "global",
-                "to": "12.447510",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "countryName3",
-                "pt": "global",
-                "to": "Hafen Italien",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "transportType3",
-                "pt": "global",
-                "to": "1",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1730,
-        "y": 420,
-        "wires": [
-            [
-                "32d17e05.9bbb82"
-            ]
-        ]
-    },
-    {
-        "id": "10807ec4.03fcc1",
-        "type": "change",
-        "z": "d59a0df1.539e3",
-        "name": "Hafen Griechenland",
-        "rules": [
-            {
-                "t": "set",
-                "p": "lat3",
-                "pt": "global",
-                "to": "37.870517",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "long3",
-                "pt": "global",
-                "to": "23.763428",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "countryName3",
-                "pt": "global",
-                "to": "Hafen Griechenland",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "transportType3",
-                "pt": "global",
-                "to": "1",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1760,
-        "y": 460,
-        "wires": [
-            [
-                "32d17e05.9bbb82"
-            ]
-        ]
-    },
-    {
-        "id": "89488937.d5f828",
-        "type": "switch",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "2",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "str"
-            }
-        ],
-        "checkall": "false",
-        "repair": false,
-        "outputs": 3,
-        "x": 2130,
-        "y": 420,
-        "wires": [
-            [
-                "888a2a66.9e7748"
-            ],
-            [
-                "5f1ee2be.59636c"
-            ],
-            [
-                "743dff47.de7a8"
-            ]
-        ]
-    },
-    {
-        "id": "888a2a66.9e7748",
-        "type": "change",
-        "z": "d59a0df1.539e3",
-        "name": "Ziel Deutschland",
-        "rules": [
-            {
-                "t": "set",
-                "p": "lat4",
-                "pt": "global",
-                "to": "48.030346",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "long4",
-                "pt": "global",
-                "to": "11.634521",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "countryName4",
-                "pt": "global",
-                "to": "München",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "transportType4",
-                "pt": "global",
-                "to": "2",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2350,
-        "y": 380,
-        "wires": [
-            [
-                "3c26e66b.70a3fa"
-            ]
-        ]
-    },
-    {
-        "id": "5f1ee2be.59636c",
-        "type": "change",
-        "z": "d59a0df1.539e3",
-        "name": "Ziel Frankreich",
-        "rules": [
-            {
-                "t": "set",
-                "p": "lat4",
-                "pt": "global",
-                "to": "48.759810",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "long4",
-                "pt": "global",
-                "to": "2.340088",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "countryName4",
-                "pt": "global",
-                "to": "Paris",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "transportType4",
-                "pt": "global",
-                "to": "2",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2340,
-        "y": 420,
-        "wires": [
-            [
-                "3c26e66b.70a3fa"
-            ]
-        ]
-    },
-    {
-        "id": "743dff47.de7a8",
-        "type": "change",
-        "z": "d59a0df1.539e3",
-        "name": "Ziel Österreich",
-        "rules": [
-            {
-                "t": "set",
-                "p": "lat4",
-                "pt": "global",
-                "to": "48.129434",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "long4",
-                "pt": "global",
-                "to": "16.413574",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "countryName4",
-                "pt": "global",
-                "to": "Wien",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "transportType4",
-                "pt": "global",
-                "to": "2",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2340,
-        "y": 460,
-        "wires": [
-            [
-                "3c26e66b.70a3fa"
-            ]
-        ]
-    },
-    {
-        "id": "9f3d3768.9d40f8",
-        "type": "exec",
-        "z": "d59a0df1.539e3",
-        "command": "",
-        "addpay": "command",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "oldrc": false,
-        "name": "",
-        "x": 2790,
-        "y": 360,
-        "wires": [
-            [
-                "1c588979.addff7",
-                "714a5afd.df79b4",
-                "7289b3c7.e55bfc"
-            ],
-            [
-                "1c588979.addff7"
-            ],
-            [
-                "1c588979.addff7"
-            ]
-        ]
-    },
-    {
-        "id": "e9961a05.43b8f8",
-        "type": "mqtt out",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "topic": "/startLogistic",
-        "qos": "2",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "51dcf7a9.36ac38",
-        "x": 3750,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "c1b74d6e.76ff8",
-        "type": "change",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "key",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 3510,
-        "y": 260,
-        "wires": [
-            [
-                "e9961a05.43b8f8"
-            ]
-        ]
-    },
-    {
-        "id": "509544f2.177a2c",
-        "type": "exec",
-        "z": "d59a0df1.539e3",
-        "command": "",
-        "addpay": "command",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "oldrc": false,
-        "name": "",
-        "x": 3290,
-        "y": 340,
-        "wires": [
-            [
-                "2215ec00.effe54",
-                "c1b74d6e.76ff8"
-            ],
-            [
-                "2215ec00.effe54"
-            ],
-            [
-                "2215ec00.effe54"
-            ]
-        ]
-    },
-    {
-        "id": "7289b3c7.e55bfc",
-        "type": "function",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "func": "\n\n\n\n\n\n\n\n\n\n\n\n\nmsg.command = `cd && cd minifabric-arm64 && ./minifab invoke -n metahf -p '\\\"setReceiver\\\", \\\"${msg.key}\\\", \\\"logistics-com\\\"'`;\n\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 3080,
-        "y": 340,
-        "wires": [
-            [
-                "509544f2.177a2c"
-            ]
-        ]
-    },
-    {
-        "id": "2215ec00.effe54",
-        "type": "debug",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 3500,
-        "y": 340,
-        "wires": []
-    },
-    {
-        "id": "13f69287.c1d36d",
-        "type": "mqtt out",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "topic": "/originCountry",
-        "qos": "2",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "51dcf7a9.36ac38",
-        "x": 1240,
-        "y": 580,
-        "wires": []
-    },
-    {
-        "id": "c08bc7e3.10b758",
-        "type": "change",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "countryName1",
-                "tot": "global"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 980,
-        "y": 540,
-        "wires": [
-            [
-                "13f69287.c1d36d"
-            ]
-        ]
-    },
-    {
-        "id": "c436fa2e.d35688",
-        "type": "function",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "func": "var json = {};\nvar path = [];\njson.path = path;\n\n\npath4 = {\n    \"name\": global.get(\"countryName1\"),\n    \"long\": global.get(\"long1\"),\n    \"lat\": global.get(\"lat1\"),\n    \"transportType\": global.get(\"transportType1\")\n}\n\npath3 = {\n    \"name\": global.get(\"countryName2\"),\n    \"long\": global.get(\"long2\"),\n    \"lat\": global.get(\"lat2\"),\n    \"transportType\": global.get(\"transportType2\")\n}\n\npath2 = {\n    \"name\": global.get(\"countryName3\"),\n    \"long\": global.get(\"long3\"),\n    \"lat\": global.get(\"lat3\"),\n    \"transportType\": global.get(\"transportType3\")\n}\n\npath1 = {\n    \"name\": global.get(\"countryName4\"),\n    \"long\": global.get(\"long4\"),\n    \"lat\": global.get(\"lat4\"),\n    \"transportType\": global.get(\"transportType4\")\n}\n\njson[\"duration\"] = 30000\njson[\"alarm\"] = true\njson.path.push(path1);\njson.path.push(path2);\njson.path.push(path3);\njson.path.push(path4);\n\n\n\nmsg.payload = json\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 320,
-        "y": 980,
-        "wires": [
-            [
-                "a791ef46.b20fd",
-                "2048d68c.6dbf5a"
-            ]
-        ]
-    },
-    {
-        "id": "a791ef46.b20fd",
-        "type": "mqtt out",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "topic": "/path",
-        "qos": "2",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "51dcf7a9.36ac38",
-        "x": 530,
-        "y": 1020,
-        "wires": []
-    },
-    {
-        "id": "2048d68c.6dbf5a",
-        "type": "debug",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 550,
-        "y": 980,
-        "wires": []
-    },
-    {
-        "id": "4ace750a.79ff5c",
-        "type": "mqtt out",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "topic": "/carbon",
-        "qos": "2",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "51dcf7a9.36ac38",
-        "x": 3120,
-        "y": 660,
-        "wires": []
-    },
-    {
-        "id": "5e08ce69.bea8a",
-        "type": "function",
-        "z": "d59a0df1.539e3",
-        "name": "carbon",
-        "func": "var json = {};\nvar path = [];\n\n\n\npath1 = {\n    \"actor\": \"Farmer\",\n    \"cap\": 2.5,\n    \"offset\": Math.round(((2 + Math.random()) + Number.EPSILON) * 100) / 100,\n \n}\n\npath2 = {\n    \"actor\": \"Logistics\",\n    \"cap\": 2.6,\n    \"offset\": Math.round(((2 + Math.random()) + Number.EPSILON) * 100) / 100,\n}\n\npath3 = {\n    \"actor\": \"Production\",\n    \"cap\": 2.8,\n    \"offset\": Math.round(((2 + Math.random()) + Number.EPSILON) * 100) / 100,\n}\n\npath4 = {\n    \"actor\": \"Retail\",\n    \"cap\": 2.8,\n    \"offset\": Math.round(((2 + Math.random()) + Number.EPSILON) * 100) / 100,\n}\n\nif (global.get(\"inputButton\") == 1){\n    path1[\"offset\"] = path1[\"offset\"] * (-0.5);\n    path3[\"offset\"] = path3[\"offset\"] * (-0.5);\n}\n\n\n\npath.push(path1);\npath.push(path2);\npath.push(path3);\npath.push(path4);\n\n\n\nmsg.payload = path\n\n\n\n\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2820,
-        "y": 600,
-        "wires": [
-            [
-                "4ace750a.79ff5c",
-                "d00fd389.c2b56"
-            ]
-        ]
-    },
-    {
-        "id": "d00fd389.c2b56",
-        "type": "debug",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 3150,
-        "y": 720,
-        "wires": []
-    },
-    {
-        "id": "2a8c2f49.ec5f",
-        "type": "mqtt out",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "topic": "/carbon",
-        "qos": "2",
-        "retain": "true",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "51dcf7a9.36ac38",
-        "x": 500,
-        "y": 860,
-        "wires": []
-    },
-    {
-        "id": "815d73df.1e76f",
-        "type": "change",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "true",
-                "tot": "bool"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 310,
-        "y": 860,
-        "wires": [
-            [
-                "2a8c2f49.ec5f"
-            ]
-        ]
-    },
-    {
-        "id": "fab0b790.b523a8",
-        "type": "change",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "inputButton",
-                "pt": "global",
-                "to": "1",
-                "tot": "num"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 290,
-        "y": 560,
-        "wires": [
-            [
-                "1c291667.9efdea"
-            ]
-        ]
-    },
-    {
-        "id": "cf28eef.31fc41",
-        "type": "change",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "inputButton",
-                "pt": "global",
-                "to": "2",
-                "tot": "num"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 290,
-        "y": 640,
-        "wires": [
-            [
-                "1c291667.9efdea"
-            ]
-        ]
-    },
-    {
-        "id": "84b99fd.0b6ba6",
-        "type": "change",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "inputButton",
-                "pt": "global",
-                "to": "3",
-                "tot": "num"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 290,
-        "y": 700,
-        "wires": [
-            [
-                "1c291667.9efdea"
-            ]
-        ]
-    },
-    {
-        "id": "cfe11996.e03898",
-        "type": "inject",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "/clear",
-        "payload": "hello",
-        "payloadType": "str",
-        "x": 90,
-        "y": 1160,
-        "wires": [
-            [
-                "a0dc34cf.4cd248"
-            ]
-        ]
-    },
-    {
-        "id": "a0dc34cf.4cd248",
-        "type": "mqtt out",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "topic": "/clear",
-        "qos": "2",
-        "retain": "true",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "51dcf7a9.36ac38",
-        "x": 310,
-        "y": 1160,
-        "wires": []
-    },
-    {
-        "id": "4438fc56.c79474",
-        "type": "inject",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 90,
-        "y": 1080,
-        "wires": [
-            [
-                "c436fa2e.d35688"
-            ]
-        ]
-    },
-    {
-        "id": "d7ef6a66.3fb1c8",
-        "type": "inject",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 90,
-        "y": 500,
-        "wires": [
-            [
-                "fab0b790.b523a8"
-            ]
-        ]
-    },
-    {
-        "id": "111dff06.8323d1",
-        "type": "inject",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 70,
-        "y": 820,
-        "wires": [
-            [
-                "815d73df.1e76f"
-            ]
-        ]
-    },
-    {
-        "id": "d5193e28.02773",
-        "type": "mqtt out",
-        "z": "5002fc1e.181174",
-        "name": "",
-        "topic": "/path",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "51dcf7a9.36ac38",
-        "x": 650,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "6f2b6956.f06918",
-        "type": "inject",
-        "z": "5002fc1e.181174",
-        "name": "EU->US",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "/path",
-        "payload": "{\"path\":[{\"name\":\"Paris\",\"lat\":\"48.8567\",\"long\":\"2.351\"},{\"name\":\"Toronto\",\"lat\":\"43.8163\",\"long\":\"-79.4287\"},{\"name\":\"Los Angeles\",\"lat\":\"34.3\",\"long\":\"-118.15\"},{\"name\":\"Havana\",\"lat\":\"23\",\"long\":\"-82\"}],\"duration\":5000,\"alarm\":false}",
-        "payloadType": "json",
-        "x": 210,
-        "y": 60,
-        "wires": [
-            [
-                "d5193e28.02773"
-            ]
-        ]
-    },
-    {
-        "id": "433939f2.d32dc8",
-        "type": "inject",
-        "z": "5002fc1e.181174",
-        "name": "VN->DE",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "/path",
-        "payload": "{\"path\":[{\"name\":\"Saigon\",\"lat\":\"10.823099\",\"long\":\"106.629662\"},{\"name\":\"Singapur\",\"lat\":\"1.352083\",\"long\":\"103.819839\"},{\"name\":\"Paris\",\"lat\":\"48.8567\",\"long\":\"2.351\"}],\"duration\":10000,\"alarm\":false}",
-        "payloadType": "json",
-        "x": 200,
-        "y": 120,
-        "wires": [
-            [
-                "d5193e28.02773"
-            ]
-        ]
-    },
-    {
-        "id": "b8503728.cc92e8",
-        "type": "inject",
-        "z": "5002fc1e.181174",
-        "name": "US->AFR",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "/path",
-        "payload": "{\"path\":[{\"name\":\"New York\",\"lat\":\"40.712776\",\"long\":\"-74.005974\"},{\"name\":\"Toronto\",\"lat\":\"43.8163\",\"long\":\"-79.4287\"},{\"name\":\"Los Angeles\",\"lat\":\"34.3\",\"long\":\"-118.15\"},{\"name\":\"Cape Town (UK)\",\"lat\":\"-33.924870\",\"long\":\"18.424055\"}],\"duration\":15000,\"alarm\":false}",
-        "payloadType": "json",
-        "x": 200,
-        "y": 180,
-        "wires": [
-            [
-                "d5193e28.02773"
-            ]
-        ]
-    },
-    {
-        "id": "242367bf.700688",
-        "type": "mqtt out",
-        "z": "5002fc1e.181174",
-        "name": "",
-        "topic": "/clear",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "51dcf7a9.36ac38",
-        "x": 370,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "d3fc7e9f.4ac3f",
-        "type": "inject",
-        "z": "5002fc1e.181174",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "/clear",
-        "payload": "hello",
-        "payloadType": "str",
-        "x": 200,
-        "y": 440,
-        "wires": [
-            [
-                "242367bf.700688"
-            ]
-        ]
-    },
-    {
-        "id": "584ce75f.cebe58",
-        "type": "inject",
-        "z": "5002fc1e.181174",
-        "name": "BR->DE",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "/path",
-        "payload": "{\"path\":[{\"name\":\"La Paz\",\"lat\":\"-16.489689\",\"long\":\"-68.119293\"},{\"name\":\"Rio de Janeiro\",\"lat\":\"-9.542630\",\"long\":\"-36.634300\"},{\"name\":\"Hamburg\",\"lat\":\"53.551086\",\"long\":\"9.993682\"}],\"duration\":5000,\"alarm\":false}",
-        "payloadType": "json",
-        "x": 200,
-        "y": 240,
-        "wires": [
-            [
-                "d5193e28.02773"
-            ]
-        ]
-    },
-    {
-        "id": "ffcb66e8.f7aa58",
-        "type": "mqtt out",
-        "z": "5002fc1e.181174",
-        "name": "",
-        "topic": "/carbon",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "51dcf7a9.36ac38",
-        "x": 780,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "34351328.314dbc",
-        "type": "inject",
-        "z": "5002fc1e.181174",
-        "name": "ALL - less",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "[{\"actor\":\"Farmer\",\"cap\":2.5,\"offset\":2.5},{\"actor\":\"Logistics\",\"cap\":2.6,\"offset\":2.7},{\"actor\":\"Production\",\"cap\":2.8,\"offset\":2.9},{\"actor\":\"Retail\",\"cap\":2.8,\"offset\":2.9}]",
-        "payloadType": "json",
-        "x": 600,
-        "y": 420,
-        "wires": [
-            [
-                "ffcb66e8.f7aa58"
-            ]
-        ]
-    },
-    {
-        "id": "90b8c6b6.fcf448",
-        "type": "mqtt out",
-        "z": "5002fc1e.181174",
-        "name": "",
-        "topic": "/carbon",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "51dcf7a9.36ac38",
-        "x": 440,
-        "y": 560,
-        "wires": []
-    },
-    {
-        "id": "a5017403.74e668",
-        "type": "inject",
-        "z": "5002fc1e.181174",
-        "name": "Farmer",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "[{\"actor\":\"Farmer\",\"cap\":2.5,\"offset\":2.5}]",
-        "payloadType": "json",
-        "x": 250,
-        "y": 600,
-        "wires": [
-            [
-                "90b8c6b6.fcf448"
-            ]
-        ]
-    },
-    {
-        "id": "e80df3bb.80aa",
-        "type": "mqtt out",
-        "z": "5002fc1e.181174",
-        "name": "",
-        "topic": "/carbon",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "51dcf7a9.36ac38",
-        "x": 440,
-        "y": 640,
-        "wires": []
-    },
-    {
-        "id": "7544f671.1b69e8",
-        "type": "inject",
-        "z": "5002fc1e.181174",
-        "name": "Logistics",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "[{\"actor\":\"Logistics\",\"cap\":2.6,\"offset\":2.7}]",
-        "payloadType": "json",
-        "x": 260,
-        "y": 680,
-        "wires": [
-            [
-                "e80df3bb.80aa"
-            ]
-        ]
-    },
-    {
-        "id": "4538c5b1.9de4bc",
-        "type": "mqtt out",
-        "z": "5002fc1e.181174",
-        "name": "",
-        "topic": "/carbon",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "51dcf7a9.36ac38",
-        "x": 800,
-        "y": 460,
-        "wires": []
-    },
-    {
-        "id": "a2c65125.d22f4",
-        "type": "inject",
-        "z": "5002fc1e.181174",
-        "name": "ALL - much",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "[{\"actor\":\"Farmer\",\"cap\":12.5,\"offset\":3.5},{\"actor\":\"Logistics\",\"cap\":23.6,\"offset\":5.7},{\"actor\":\"Production\",\"cap\":45.8,\"offset\":7.9},{\"actor\":\"Retail\",\"cap\":5.8,\"offset\":3.9}]",
-        "payloadType": "json",
-        "x": 630,
-        "y": 500,
-        "wires": [
-            [
-                "4538c5b1.9de4bc"
-            ]
-        ]
-    },
-    {
-        "id": "1a6149fc.24fc26",
-        "type": "mqtt out",
-        "z": "5002fc1e.181174",
-        "name": "",
-        "topic": "/carbon",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "51dcf7a9.36ac38",
-        "x": 840,
-        "y": 540,
-        "wires": []
-    },
-    {
-        "id": "35009b1c.1abe84",
-        "type": "inject",
-        "z": "5002fc1e.181174",
-        "name": "ALL - Compensate",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "[{\"actor\":\"Farmer\",\"cap\":12.5,\"offset\":0},{\"actor\":\"Logistics\",\"cap\":23.6,\"offset\":0},{\"actor\":\"Production\",\"cap\":45.8,\"offset\":0},{\"actor\":\"Retail\",\"cap\":5.8,\"offset\":0}]",
-        "payloadType": "json",
-        "x": 650,
-        "y": 580,
-        "wires": [
-            [
-                "1a6149fc.24fc26"
-            ]
-        ]
-    },
-    {
-        "id": "1edb3064.570f4",
-        "type": "inject",
-        "z": "5002fc1e.181174",
-        "name": "DE->BR (ALARM)",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "/path",
-        "payload": "{\"path\":[{\"name\":\"Hamburg\",\"lat\":\"53.551086\",\"long\":\"9.993682\"},{\"name\":\"Rio de Janeiro\",\"lat\":\"-9.542630\",\"long\":\"-36.634300\"},{\"name\":\"La Paz\",\"lat\":\"-16.489689\",\"long\":\"-68.119293\"}],\"duration\":5000,\"alarm\":true}",
-        "payloadType": "json",
-        "x": 220,
-        "y": 300,
-        "wires": [
-            [
-                "d5193e28.02773"
-            ]
-        ]
-    },
-    {
-        "id": "5e3ec8c0.634918",
-        "type": "rpi-gpio in",
-        "z": "d59a0df1.539e3",
-        "name": "coffeePlane",
-        "pin": "4",
-        "intype": "down",
-        "debounce": "25",
-        "read": false,
-        "bcm": true,
-        "x": 70,
-        "y": 700,
-        "wires": [
-            [
-                "84b99fd.0b6ba6"
-            ]
-        ]
-    },
-    {
-        "id": "994c2bf6.3cd298",
-        "type": "rpi-gpio in",
-        "z": "d59a0df1.539e3",
-        "name": "Rückruf",
-        "pin": "17",
-        "intype": "down",
-        "debounce": "25",
-        "read": false,
-        "bcm": true,
-        "x": 70,
-        "y": 980,
-        "wires": [
-            [
-                "c436fa2e.d35688"
-            ]
-        ]
-    },
-    {
-        "id": "db40bfcb.5f87a",
-        "type": "rpi-gpio in",
-        "z": "d59a0df1.539e3",
-        "name": "coffeePlane",
-        "pin": "27",
-        "intype": "down",
-        "debounce": "25",
-        "read": false,
-        "bcm": true,
-        "x": 70,
-        "y": 640,
-        "wires": [
-            [
-                "cf28eef.31fc41"
-            ]
-        ]
-    },
-    {
-        "id": "5ef10a3a.9c8d54",
-        "type": "rpi-gpio in",
-        "z": "d59a0df1.539e3",
-        "name": "Kompensation",
-        "pin": "22",
-        "intype": "down",
-        "debounce": "25",
-        "read": false,
-        "bcm": true,
-        "x": 100,
-        "y": 860,
-        "wires": [
-            [
-                "815d73df.1e76f"
-            ]
-        ]
-    },
-    {
-        "id": "8beb421d.297f",
-        "type": "rpi-gpio in",
-        "z": "d59a0df1.539e3",
-        "name": "coffeePlane",
-        "pin": "10",
-        "intype": "down",
-        "debounce": "25",
-        "read": false,
-        "bcm": true,
-        "x": 70,
-        "y": 560,
-        "wires": [
-            [
-                "fab0b790.b523a8"
-            ]
-        ]
-    },
-    {
-        "id": "ee64a277.0e9d5",
-        "type": "rpi-gpio in",
-        "z": "d59a0df1.539e3",
-        "name": "coffeePlane",
-        "pin": "9",
-        "intype": "down",
-        "debounce": "25",
-        "read": false,
-        "bcm": true,
-        "x": 70,
-        "y": 420,
-        "wires": [
-            [
-                "1c291667.9efdea"
-            ]
-        ]
-    },
-    {
-        "id": "1c291667.9efdea",
-        "type": "random",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "low": 1,
-        "high": "3",
-        "inte": "true",
-        "property": "payload",
-        "x": 280,
-        "y": 420,
-        "wires": [
-            [
-                "b29a65c0.053448"
-            ]
-        ]
-    },
-    {
-        "id": "956ba4c3.ceeeb8",
-        "type": "random",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "low": 1,
-        "high": "3",
-        "inte": "true",
-        "property": "payload",
-        "x": 820,
-        "y": 420,
-        "wires": [
-            [
-                "ab26b28c.dc9aa",
-                "c08bc7e3.10b758"
-            ]
-        ]
-    },
-    {
-        "id": "20365e17.16ee72",
-        "type": "random",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "low": 1,
-        "high": "3",
-        "inte": "true",
-        "property": "payload",
-        "x": 1380,
-        "y": 420,
-        "wires": [
-            [
-                "e5a1524e.fe3c5"
-            ]
-        ]
-    },
-    {
-        "id": "32d17e05.9bbb82",
-        "type": "random",
-        "z": "d59a0df1.539e3",
-        "name": "",
-        "low": 1,
-        "high": "3",
-        "inte": "true",
-        "property": "payload",
-        "x": 1980,
-        "y": 420,
-        "wires": [
-            [
-                "89488937.d5f828"
             ]
         ]
     }

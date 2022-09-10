@@ -202,10 +202,10 @@ export class CapAndTradeWidgetComponent implements OnInit, AfterViewInit {
 
     client.subscribe('/path');
     client.subscribe('/carbon');
-    client.subscribe('/carbon/logistics');
+    /* client.subscribe('/carbon/logistics');
     client.subscribe('/carbon/retail');
     client.subscribe('/carbon/production');
-    client.subscribe('/carbon/compensation');
+    client.subscribe('/carbon/compensation'); */
 
     client.on('message', (topic, message) => {
       console.log(topic);
