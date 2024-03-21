@@ -5,6 +5,7 @@
 |------|----------|-------|
 |11.02.2022| V0.1| Razvan Hrestic (razvan.hrestic@unibw.de)|
 |27.02.2022| V0.2| Razvan Hrestic (razvan.hrestic@unibw.de)|
+|21.03.2024| V0.3| Razvan Hrestic (razvan.hrestic@unibw.de)|
 
 ## Introduction
 
@@ -18,8 +19,8 @@ From the infrastructure perspective we have the following components
 
 | Component name   |      Layer      |  Technology description  | Details |
 |----------|:-------------|------:|:------:|
-| Physical node |  Physical | DELL Server | The physical servers|
-| Storage nodes | Physical | NetApp Storage appliance | used for storing development-related data, container and virtual machine images |
+| Physical node |  Physical | Server | The physical servers|
+| Storage nodes | Physical | Storage appliance | used for storing development-related data, container and virtual machine images |
 | Container platform |   virtualization platform   |  RedHat OpenShift Container Platform (OCP)| Locally hosted edition of the OCP |
 | Orchestration | container virtualization |  Kubernetes | Hosts and controls all services. It wraps containers in units called _pods_ |
 | Individual containers| container | docker | Applications and other solution components run on containers |
@@ -93,7 +94,7 @@ After a scenario access request has been approved, we plan to use a scenario map
 
 The webapplication outputs a scenario configuration file in JSON-format which is then used by the Provisioning Engine.
 
-The scenario web application is React based and is planned to be released as an open source artifact on GitHub. Our provisioning engine is based on multiple compoments such as minifabric, but mainly on a Tool called [Ansible](https://docs.ansible.com/ansible/latest/user_guide/index.html#getting-started).
+The scenario web application is React based and is planned to be released as an open source artifact on GitHub. Our provisioning engine is based on multiple compoments such as Hyperledger Bevel, but mainly on a Tool called [Ansible](https://docs.ansible.com/ansible/latest/user_guide/index.html#getting-started).
 
 These two components combined with the OpenShift virtualization platform are targeted at greatly reducing complexity of infrastructure setup for research scenarios and for developing own smart contracts (Chaincode in Fabric-terms). This complexity is partly necessary for the system to work, we believe, however, that current cloud-offerings e.g from IBM, Oracle, Microsoft etc. are not primarily targeted at the research community and while they also attempt to reduce complexity, they do not tend to individual requirements and cannot fulfill e.g. high-performance constraints or allow simulations on large Blockchain-networks. 
 
@@ -109,8 +110,7 @@ By using a pre-provisioned generic Fabric infrastructure in combination with Cha
 
 ### Requesting access for scenarios
 
-🚧
-We will be publishing updates here very soon so make sure to revisit this page.
+You can request access through our E-Mail lions-community_[AT_unibw.de
 
 ### Lifecycle Policy
 
